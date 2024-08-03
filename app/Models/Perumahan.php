@@ -11,15 +11,34 @@ class Perumahan extends Model
     
     protected $fillable = [
         'nama_perumahan',
-        'des',
-        'kecamatan',
         'nama_developer',
         'luas_lahan_perumahan',
         'luas_lahan_efektif',
         'luas_lahan_non_efektif',
-        'jumlah_unit_rumah_rencana',
+        'jumlah_unit',
         'status_serah_terima_psu',
-        'url_maps',
-        'foto_dokumentasi',
+        'maps',
+        'foto',
+        'desa_id',
     ];
+
+    public function desa()
+    {
+        return $this->belongsTo(Desa::class);
+    }
+
+    public function prasarana()
+    {
+        return $this->hasOne(Prasarana::class);
+    }
+
+    public function sarana()
+    {
+        return $this->hasOne(Sarana::class);
+    }
+
+    public function utilitas()
+    {
+        return $this->hasOne(Utilitas::class);
+    }
 }
