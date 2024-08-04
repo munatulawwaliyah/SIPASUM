@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('prasarana', function (Blueprint $table) {
             $table->id();
             $table->foreignId('perumahan_id')->constrained('perumahan')->onDelete('cascade');
-            $table->string('jaringan_jalan');
-            $table->string('jaringan_drainase');
-            $table->string('jaringan_sanitasi');
-            $table->string('jaringan_persampahan');
+            $table->string('jaringan_jalan')->nullable();
+            $table->string('jaringan_drainase')->nullable();
+            $table->string('jaringan_sanitasi')->nullable();
+            $table->string('jaringan_persampahan')->nullable();
             $table->timestamps();
         });
     }

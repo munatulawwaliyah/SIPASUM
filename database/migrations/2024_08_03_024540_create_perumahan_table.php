@@ -20,8 +20,8 @@ return new class extends Migration
             $table->decimal('luas_lahan_non_efektif');
             $table->integer('jumlah_unit');
             $table->string('status_serah_terima_psu');
-            $table->string('maps')->nullable();
-            $table->string('foto')->nullable();
+            $table->string('maps');
+            $table->string('foto');
             $table->foreignId('desa_id')->constrained('desa')->onDelete('cascade');
             $table->timestamps();
         });

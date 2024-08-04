@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('sarana', function (Blueprint $table) {
             $table->id();
             $table->foreignId('perumahan_id')->constrained('perumahan')->onDelete('cascade');
-            $table->string('peribadahan');
-            $table->string('rekreasi_dan_olahraga');
-            $table->string('pertamanan_dan_rth');
-            $table->string('perniagaan');
-            $table->string('fasilitas_sosial');
-            $table->string('pendidikan');
-            $table->string('kesehatan');
-            $table->string('pemakaman');
-            $table->string('parkir');
+            $table->string('peribadahan')->nullable();
+            $table->string('rekreasi_dan_olahraga')->nullable();
+            $table->string('pertamanan_dan_rth')->nullable();
+            $table->string('perniagaan')->nullable();
+            $table->string('fasilitas_sosial')->nullable();
+            $table->string('pendidikan')->nullable();
+            $table->string('kesehatan')->nullable();
+            $table->string('pemakaman')->nullable();
+            $table->string('parkir')->nullable();
             $table->timestamps();
         });
     }
