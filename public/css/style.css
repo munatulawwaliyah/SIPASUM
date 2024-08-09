@@ -184,26 +184,54 @@
 }
 /*** Navbar End ***/
 
+.small-text {
+    font-size: 12px;
+}
+
 /*** Hero Header ***/
-.hero-header {
+/* .hero-header {
     background: linear-gradient(rgba(248, 223, 173, 0.1), rgba(248, 223, 173, 0.1)), url(../img/Background.png);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+} */
+.hero-header {
+    height: 100vh; /* Kontainer mengambil seluruh tinggi viewport */
+    padding: 0; /* Hilangkan padding agar gambar benar-benar full screen */
 }
 
-.carousel-item {
-    position: relative;
+.carousel-inner img {
+    height: 100vh; /* Gambar mengambil seluruh tinggi viewport */
+    width: 100vw; /* Gambar mengambil seluruh lebar viewport */
+    object-fit: cover; /* Gambar menutupi kontainer tanpa mengubah aspek rasio */
 }
+
+.carousel-inner {
+    height: 100%;
+}
+
+.carousel, .carousel-item {
+    height: 85%;
+}
+
+/* .carousel-item {
+    position: relative;
+} */
 
 .carousel-item a {
     position: absolute;
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 25px;
     background: linear-gradient(rgba(255, 181, 36, 0.7), rgba(255, 181, 36, 0.7));
 }
+
+/* .carousel-inner img {
+    max-height: 500px; 
+    width: 100%;
+    object-fit: cover; 
+} */
 
 .carousel-control-next,
 .carousel-control-prev {

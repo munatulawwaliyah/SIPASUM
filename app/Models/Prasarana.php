@@ -15,6 +15,7 @@ class Prasarana extends Model
         'jaringan_drainase',
         'jaringan_sanitasi',
         'jaringan_persampahan',
+        'prasarana_lainnya',
     ];
 
     public function perumahans()

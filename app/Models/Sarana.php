@@ -20,6 +20,8 @@ class Sarana extends Model
         'kesehatan',
         'pemakaman',
         'parkir',
+        'pelayanan_umum_dan_pemerintahan',
+        'sarana_lainnya',
     ];
 
     public function perumahans()

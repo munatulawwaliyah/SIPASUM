@@ -66,25 +66,24 @@
                 </button>
                     <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
-                            <a href="" class="nav-item nav-link active">Beranda</a>
+                            <a href="{{('/')}}" class="nav-item nav-link active">Beranda</a>
                             <a href="" class="nav-item nav-link">Berita</a>
-                            <a href="" class="nav-item nav-link">Daftar Perumahan</a>
+                            <a href="{{'daftarperumahan'}}" class="nav-item nav-link">Daftar Perumahan</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Serah Terima PSU</a>
                                 <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                    <a href="" class="dropdown-item">Cart</a>
-                                    <a href="" class="dropdown-item">Chackout</a>
-                                    <a href="" class="dropdown-item">Testimonial</a>
-                                    <a href="" class="dropdown-item">404 Page</a>
+                                    <a href="" class="dropdown-item">Panduan</a>
+                                    <a href="" class="dropdown-item">Format dan Persyaratan</a>
                                 </div>
                             </div>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Tentang Hukum</a>
                                 <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                    <a href="" class="dropdown-item">Cart</a>
-                                    <a href="" class="dropdown-item">Chackout</a>
-                                    <a href="" class="dropdown-item">Testimonial</a>
-                                    <a href="" class="dropdown-item">404 Page</a>
+                                    <a href="" class="dropdown-item">Undang-Undang</a>
+                                    <a href="" class="dropdown-item">Peraturan Pemerintah</a>
+                                    <a href="" class="dropdown-item">Peraturan Menteri</a>
+                                    <a href="" class="dropdown-item">Peraturan Daerah</a>
+                                    <a href="" class="dropdown-item">Peraturan Bupati</a>
                                 </div>
                             </div>
                             <a href="" class="nav-item nav-link">Tentang</a>
@@ -98,72 +97,68 @@
         <!-- Navbar End -->
 
        <!-- Hero Start -->
-       <div class="container-fluid py-5 mb-5 hero-header">
-            <div class="container py-5">
-                <div class="row g-5 align-items-center">
-                    <div class="col-md-12 col-lg-5">
-                        <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel">
-                            <div class="carousel-inner" role="listbox">
-                                <div class="carousel-item active rounded">
-                                    <img src="img/hero-img-1.png" class="img-fluid w-100 h-100 bg-secondary rounded" alt="First slide">
-                                </div>
-                                <div class="carousel-item rounded">
-                                    <img src="img/hero-img-2.jpg" class="img-fluid w-100 h-100 rounded" alt="Second slide">
-                                </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
+        <div class="container-fluid hero-header">
+            <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel">
+                <div class="carousel-inner rounded" role="listbox">
+                    <div class="carousel-item active">
+                        <img src="img/BG.jpg" class="img-fluid w-100 bg-secondary" alt="First slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/hero-img-2.jpg" class="img-fluid w-100" alt="Second slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/featur-1.jpg" class="img-fluid w-100" alt="Third slide">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    <!-- Hero End -->
+
+    <!-- Data Statistik Start -->
+    <div class="container my-3">
+        <div class="col-md-12 mt-3">
+            <h1 class="mb-4 display-5 text-primary text-center">DATA STATISTIK</h1>
+            <div class="bg-light p-3 rounded">
+                <div class="row g-2 justify-content-center">
+                    <div class="col-md-6 col-lg-3 col-xl-4">
+                        <div class="counter bg-white rounded text-center p-2">
+                            <i class="fa fa-users text-secondary"></i>
+                            <h4>satisfied customers</h4>
+                            <h1>1963</h1>
                         </div>
                     </div>
-                    <div class="col-md-12 col-lg-7">
-                        <h1 class="mb-4 display-5 text-primary text-center">DATA STATISTIK</h1>
-                        <div class="bg-light p-3 rounded">
-                            <div class="row g-2 justify-content-center">
-                                <div class="col-md-6 col-lg-6 col-xl-6">
-                                    <div class="counter bg-white rounded text-center p-2">
-                                        <i class="fa fa-users text-secondary"></i>
-                                        <h4>satisfied customers</h4>
-                                        <h1>1963</h1>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-6 col-xl-6">
-                                    <div class="counter bg-white rounded text-center p-2">
-                                        <i class="fa fa-users text-secondary"></i>
-                                        <h4>quality of service</h4>
-                                        <h1>99%</h1>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-6 col-xl-6">
-                                    <div class="counter bg-white rounded text-center p-2">
-                                        <i class="fa fa-users text-secondary"></i>
-                                        <h4>quality certificates</h4>
-                                        <h1>33</h1>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-6 col-xl-6">
-                                    <div class="counter bg-white rounded text-center p-2">
-                                        <i class="fa fa-users text-secondary"></i>
-                                        <h4>Available Products</h4>
-                                        <h1>789</h1>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="col-md-6 col-lg-3 col-xl-4">
+                        <div class="counter bg-white rounded text-center p-2">
+                            <i class="fa fa-users text-secondary"></i>
+                            <h4>quality of service</h4>
+                            <h1>99%</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 col-xl-4">
+                        <div class="counter bg-white rounded text-center p-2">
+                            <i class="fa fa-users text-secondary"></i>
+                            <h4>quality certificates</h4>
+                            <h1>33</h1>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Hero End -->
+    </div>
+    <!-- Data Statistik End -->
+
 
         <!-- Filter & Search Start -->
-        <div class="container my-5">
-            <div class="row mb-3">
+        <div class="container my-3">
+            <div class="row mb-4 mt-4">
                 <!-- Filter Section -->
                 <div class="col-md-4 mb-3 mb-md-0">
                     <form id="filter-form" action="{{ url('/') }}" method="get">
@@ -203,7 +198,7 @@
                         </div>
                     </form>
                 </div>
-            </div>
+        </div>
         <!-- Filter & Search End -->
 
 
@@ -269,28 +264,31 @@
                                                 <div class="row my-3">
                                                     <div class="col-4 text-center">
                                                         @foreach ($p->prasaranas as $pra)
-                                                        <p><strong>Jaringan Jalan: </strong> {{ $pra->jaringan_jalan ?: '-'}} m2</p>
-                                                        <p><strong>Jaringan Drainase: </strong> {{ $pra->jaringan_drainase ?: '-'}} m2</p>
-                                                        <p><strong>Jaringan Sanitasi: </strong> {{ $pra->jaringan_sanitasi ?: '-'}}</p>
-                                                        <p><strong>Jaringan Persampahan: </strong>{{ $pra->jaringan_persampahan ?: '-'}}</p>
+                                                        <p><strong>Jaringan Jalan: </strong> {{ $pra->jaringan_jalan ? $pra->jaringan_jalan . 'm2' : '-'}}</p>
+                                                        <p><strong>Jaringan Drainase: </strong> {{ $pra->jaringan_drainase ? $pra->jaringan_drainase . 'm2' : '-'}}</p>
+                                                        <p><strong>Jaringan Sanitasi: </strong> {{ $pra->jaringan_sanitasi ?$pra->jaringan_sanitasi . 'm2' : '-'}}</p>
+                                                        <p><strong>Jaringan Persampahan: </strong>{{ $pra->jaringan_persampahan ? $pra->jaringan_persampahan . 'm2' : '-'}}</p>
+                                                        <p><strong>Prasarana Lainya : <br> </strong>{{ $pra->jaringan_persampahan ?: '-'}}</p>
                                                         @endforeach
                                                     </div>
                                                     <div class="col-4 text-center">
                                                         @foreach ($p->saranas as $sar)
-                                                        <p><strong> Peribadahan: </strong> {{ $sar->peribadahan ?: '-' }}</p>
-                                                        <p><strong> Rekreasi & Olahraga: </strong> {{ $sar->rekreasi_dan_olahraga ?: '-'}}</p>
-                                                        <p><strong> Pertamanan & RTH: </strong> {{ $sar->pertamanan_dan_rth ?: '-'}} m2</p>
-                                                        <P><strong> Perniagaan: </strong> {{ $sar->perniagaan ?: '-'}}</P>
-                                                        <p><strong> Fasilitas Sosial: </strong> {{ $sar->fasilitas_sosial ?: '-'}}</p>
-                                                        <p><strong> Pendidikan: </strong> {{ $sar->pendidikan ?: '-'}}</p>
-                                                        <p><strong> Kesehatan: </strong> {{ $sar->kesehatan ?: '-'}}</p>
-                                                        <p><strong> Pemakaman: </strong> {{ $sar->pemakaman ?: '-'}} m2</p>
-                                                        <p><strong> Parkir: </strong> {{ $sar->parkir ?: '-'}} m2</p>
+                                                        <p><strong> Peribadatan: </strong> {{ $sar->peribadahan ? $sar->peribadahan . 'm2' : '-' }}</p>
+                                                        <p><strong> Rekreasi & Olahraga: </strong> {{ $sar->rekreasi_dan_olahraga ? $sar->rekreasi_dan_olahraga . 'm2' : '-'}}</p>
+                                                        <p><strong> Pertamanan & RTH: </strong> {{ $sar->pertamanan_dan_rth ? $sar->pertamanan_dan_rth . 'm2' : '-'}}</p>
+                                                        <P><strong> Perniagaan: </strong> {{ $sar->perniagaan ? $sar->perniagaan . 'm2' : '-'}}</P>
+                                                        <p><strong> Fasilitas Sosial: </strong> {{ $sar->fasilitas_sosial ? $sar->fasilitas_sosial . 'm2' : '-'}}</p>
+                                                        <p><strong> Pendidikan: </strong> {{ $sar->pendidikan ? $sar->pendidikan . 'm2' : '-'}}</p>
+                                                        <p><strong> Kesehatan: </strong> {{ $sar->kesehatan ? $sar->kesehatan . 'm2' : '-'}}</p>
+                                                        <p><strong> Pemakaman: </strong> {{ $sar->pemakaman ? $sar->pemakaman . 'm2' : '-'}}</p>
+                                                        <p><strong> Parkir: </strong> {{ $sar->parkir ? $sar->parkir . 'm2' : '-'}}</p>
+                                                        <p><strong> Pelayan Umum dan Pemerintahan: </strong> {{ $sar->pelayanan_umum_dan_pemerintahan ? $sar->pelayanan_umum_dan_pemerintahan . 'm2' : '-'}}</p>
+                                                        <p><strong> Sarana Lainnya: <br> </strong> {{ $sar->sarana_lainnya ?: '-'}}</p>
                                                         @endforeach
                                                     </div>
                                                     <div class="col-4 text-center">
                                                         @foreach ($p->utilitas as $utl)
-                                                        <p><strong>Penerangan: </strong> {{ $utl->jaringan_penerangan ?: '-'}} Unit</p>
+                                                        <p><strong>Penerangan: </strong> {{ $utl->jaringan_penerangan ? $utl->jaringan_penerangan . 'Unit' : '-'}}</p>
                                                         <p><strong>Air Bersih: </strong> {{ $utl->jaringan_air_bersih ?: '-'}}</p>
                                                         <p><strong>Listrik: </strong>{{ $utl->jaringan_listrik ? 'Tersedia' : 'Tidak Tersedia'}}</p>
                                                         <p><strong>Telpon: </strong>{{ $utl->jaringan_telpon ? 'Tersedia' : 'Tidak Tersedia'}}</p>

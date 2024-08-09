@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('kesehatan')->nullable();
             $table->string('pemakaman')->nullable();
             $table->string('parkir')->nullable();
+            $table->string('pelayanan_umum_dan_pemerintahan')->nullable();
+            $table->string('sarana_lainnya')->nullable();
             $table->timestamps();
         });
     }

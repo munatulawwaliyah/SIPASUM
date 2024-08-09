@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('jaringan_drainase')->nullable();
             $table->string('jaringan_sanitasi')->nullable();
             $table->string('jaringan_persampahan')->nullable();
+            $table->string('prasarana_lainnya')->nullable();
             $table->timestamps();
         });
     }

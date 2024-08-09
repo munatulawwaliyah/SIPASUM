@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminPerumahanController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\DaptarperumController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Perumahan;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::match(['get', 'post'], '/', [HomeController::class, 'index']);
+Route::get('/daftarperumahan', [DaptarperumController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
