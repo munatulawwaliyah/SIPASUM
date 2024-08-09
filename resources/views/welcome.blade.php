@@ -161,68 +161,177 @@
         </div>
         <!-- Hero End -->
 
-        <!-- Filter and Search Start -->
-    <div class="container my-5">
+        <!-- Filter & Search Start -->
+        <div class="container my-5">
+            <div class="row mb-3">
+                <!-- Filter Section -->
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <form id="filter-form" action="{{ url('/') }}" method="get">
+                        <div class="mb-3">
+                            <label for="kecamatan" class="form-label">Kecamatan</label>
+                            <select class="form-select" id="kecamatan" name="kecamatan_id">
+                                <option value="">Choose...</option>
+                                @foreach($kecamatans as $kec)
+                                    <option value="{{ $kec->id }}">{{ $kec->nama_kecamatan }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <form id="desa-form" action="{{ url('/') }}" method="get">
+                        <div class="mb-3">
+                            <label for="desa" class="form-label">Desa</label>
+                            <select class="form-select" id="desa" name="desa_id">
+                                <option value="">Choose...</option>
+                                @foreach($desas as $d)
+                                    <option value="{{ $d->id }}">{{ $d->nama_desa }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <form id="search-form" action="" method="post">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="search" class="form-label">Search</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="search" name="search" placeholder="Nama Perumahan">
+                                <button class="btn btn-primary" type="submit">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        <!-- Filter & Search End -->
+
+
+        <!-- Tabel Perumahan Start -->
         <div class="row">
-            <!-- Filter Section -->
-            <div class="col-md-3">
-                <div class="mb-3">
-                    <label for="kecamatan" class="form-label">Kecamatan</label>
-                    <select class="form-select" id="kecamatan">
-                        <option selected>Choose...</option>
-                        <option value="kecamatan1">Kecamatan 1</option>
-                        <option value="kecamatan2">Kecamatan 2</option>
-                        <option value="kecamatan3">Kecamatan 3</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="mb-3">
-                    <label for="desa" class="form-label">Desa</label>
-                    <select class="form-select" id="desa">
-                        <option selected>Choose...</option>
-                        <option value="desa1">Desa 1</option>
-                        <option value="desa2">Desa 2</option>
-                        <option value="desa3">Desa 3</option>
-                    </select>
-                </div>
-            </div>
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Perumahan</th>
+                                <th>Kecamatan</th>
+                                <th>Desa</th>
+                                <th>Status</th>
+                                <th>Jumlah Unit</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($perumahans as $p)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $p->nama_perumahan }}</td>
+                                <td>{{ $p->desas->kecamatans->nama_kecamatan }}</td>
+                                <td>{{ $p->desas->nama_desa }}</td>
+                                <td>{{ $p->status_serah_terima_psu ? 'Sudah' : 'Belum' }}</td>
+                                <td>{{ $p->jumlah_unit }}</td>
+                                <td><a href="" data-bs-toggle="modal" data-bs-target="#myModal-{{ $p->id }}">View</a></td>
+                            </tr>
+                            </div>
+                            <!-- Tabel Perumahan End -->
 
-            <!-- Search Section -->
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label for="search" class="form-label">Search</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="search" placeholder="Search here">
-                        <button class="btn btn-primary" type="button">Search</button>
-                    </div>
-                </div>
+                            <!-- Modal Detail Start-->
+                            <div class="modal fade" id="myModal-{{ $p->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-{{ $p->id }}" aria-hidden="true">
+                                <div class="modal-dialog modal-xl" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="myModalLabel-{{ $p->id }}">Detail Perumahan</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-12 text-center">
+                                                        <img src="uploads/{{ $p->foto }}" alt="Foto Perumahan" class="img-fluid mb-3" style="max-height: 300px;">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <p><strong>Nama Perumahan:</strong> {{ $p->nama_perumahan }}</p>
+                                                        <p><strong>Kecamatan:</strong> {{ $p->desas->kecamatans->nama_kecamatan }}</p>
+                                                        <p><strong>Desa:</strong> {{ $p->desas->nama_desa }}</p>
+                                                        <p><strong>Nama Developer:</strong> {{ $p->nama_developer }}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row my-3">
+                                                    <div class="col-12 text-center bg-light p-2">Jenis PSU</div>
+                                                    <div class="col-4 text-center bg-light p-2">Prasarana</div>
+                                                    <div class="col-4 text-center bg-light p-2">Sarana</div>
+                                                    <div class="col-4 text-center bg-light p-2">Utilitas</div>
+                                                </div>
+                                                <div class="row my-3">
+                                                    <div class="col-4 text-center">
+                                                        @foreach ($p->prasaranas as $pra)
+                                                        <p><strong>Jaringan Jalan: </strong> {{ $pra->jaringan_jalan ?: '-'}} m2</p>
+                                                        <p><strong>Jaringan Drainase: </strong> {{ $pra->jaringan_drainase ?: '-'}} m2</p>
+                                                        <p><strong>Jaringan Sanitasi: </strong> {{ $pra->jaringan_sanitasi ?: '-'}}</p>
+                                                        <p><strong>Jaringan Persampahan: </strong>{{ $pra->jaringan_persampahan ?: '-'}}</p>
+                                                        @endforeach
+                                                    </div>
+                                                    <div class="col-4 text-center">
+                                                        @foreach ($p->saranas as $sar)
+                                                        <p><strong> Peribadahan: </strong> {{ $sar->peribadahan ?: '-' }}</p>
+                                                        <p><strong> Rekreasi & Olahraga: </strong> {{ $sar->rekreasi_dan_olahraga ?: '-'}}</p>
+                                                        <p><strong> Pertamanan & RTH: </strong> {{ $sar->pertamanan_dan_rth ?: '-'}} m2</p>
+                                                        <P><strong> Perniagaan: </strong> {{ $sar->perniagaan ?: '-'}}</P>
+                                                        <p><strong> Fasilitas Sosial: </strong> {{ $sar->fasilitas_sosial ?: '-'}}</p>
+                                                        <p><strong> Pendidikan: </strong> {{ $sar->pendidikan ?: '-'}}</p>
+                                                        <p><strong> Kesehatan: </strong> {{ $sar->kesehatan ?: '-'}}</p>
+                                                        <p><strong> Pemakaman: </strong> {{ $sar->pemakaman ?: '-'}} m2</p>
+                                                        <p><strong> Parkir: </strong> {{ $sar->parkir ?: '-'}} m2</p>
+                                                        @endforeach
+                                                    </div>
+                                                    <div class="col-4 text-center">
+                                                        @foreach ($p->utilitas as $utl)
+                                                        <p><strong>Penerangan: </strong> {{ $utl->jaringan_penerangan ?: '-'}} Unit</p>
+                                                        <p><strong>Air Bersih: </strong> {{ $utl->jaringan_air_bersih ?: '-'}}</p>
+                                                        <p><strong>Listrik: </strong>{{ $utl->jaringan_listrik ? 'Tersedia' : 'Tidak Tersedia'}}</p>
+                                                        <p><strong>Telpon: </strong>{{ $utl->jaringan_telpon ? 'Tersedia' : 'Tidak Tersedia'}}</p>
+                                                        <p><strong>Pemadam Kebakaran: </strong>{{ $utl->jaringan_pemadam_kebakaran ? 'Tersedia' : 'Tidak Tersedia'}}</p>
+                                                        <p><strong>Gas: </strong>{{ $utl->gas ? 'Tersedia' : 'Tidak Tersedia'}}</p>
+                                                        <p><strong>Transportasi: </strong>{{ $utl->transportasi ? 'Tersedia' : 'Tidak Tersedia'}}</p>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                                <!-- Visual separator -->
+                                                <hr>
+                                                <div class="row my-3">
+                                                    <div class="col-4 text-center bg-light p-2">Luas Perumahan: <br><strong>{{ $p->luas_lahan_perumahan }} m2</strong></div>
+                                                    <div class="col-4 text-center bg-light p-2">Luas Lahan Non Efektif: <br><strong>{{ $p->luas_lahan_non_efektif }} m2</strong></div>
+                                                    <div class="col-4 text-center bg-light p-2">Luas Lahan Efektif: <br><strong>{{ $p->luas_lahan_efektif }} m2</strong></div>
+                                                </div>
+                                                <div class="row my-3">
+                                                    <div class="col-12">
+                                                        <!-- Embed Google Maps iframe here -->
+                                                        <div class="embed-responsive embed-responsive-16by9">
+                                                            <iframe class="embed-responsive-item" src="{{ $p->maps }}" frameborder="0" style="width: 100%; height: 200px;" allowfullscreen></iframe>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
-        </div>
-    </div>
-    <!-- Filter and Search End -->
-
-    <!-- Table Section -->
-    <div class="container my-5">
-    <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Nama Perumahan</th>
-                        <th>Kecamatan</th>
-                        <th>Desa</th>
-                        <th>Status</th>
-                        <th>Jumlah Unit</th>
-                        <th>Detail</th>
-                    </tr>
-                </thead>
-            </table>
         </div>
     </div>
 </div>
+<!-- Modal Detail End -->
 
-        
 
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
@@ -261,28 +370,6 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <div class="d-flex flex-column text-start footer-item">
-                            <h4 class="text-light mb-3">Shop Info</h4>
-                            <a class="btn-link" href="">About Us</a>
-                            <a class="btn-link" href="">Contact Us</a>
-                            <a class="btn-link" href="">Privacy Policy</a>
-                            <a class="btn-link" href="">Terms & Condition</a>
-                            <a class="btn-link" href="">Return Policy</a>
-                            <a class="btn-link" href="">FAQs & Help</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="d-flex flex-column text-start footer-item">
-                            <h4 class="text-light mb-3">Account</h4>
-                            <a class="btn-link" href="">My Account</a>
-                            <a class="btn-link" href="">Shop details</a>
-                            <a class="btn-link" href="">Shopping Cart</a>
-                            <a class="btn-link" href="">Wishlist</a>
-                            <a class="btn-link" href="">Order History</a>
-                            <a class="btn-link" href="">International Orders</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
                         <div class="footer-item">
                             <h4 class="text-light mb-3">Contact</h4>
                             <p>Address: 1429 Netus Rd, NY 48247</p>
@@ -305,9 +392,6 @@
                         <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span>
                     </div>
                     <div class="col-md-6 my-auto text-center text-md-end text-white">
-                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
                         Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
                     </div>
                 </div>

@@ -11,15 +11,15 @@ class Desa extends Model
 
     protected $fillable = [
         'nama_desa',
-        'kecamatan_id',
+        'kecamatans_id',
     ];
 
-    public function kecamatan()
+    public function kecamatans()
     {
         return $this->belongsTo(Kecamatan::class);
     }
 
-    public function perumahan()
+    public function perumahans()
     {
         return $this->hasMany(Perumahan::class);
     }

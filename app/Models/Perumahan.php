@@ -19,26 +19,26 @@ class Perumahan extends Model
         'status_serah_terima_psu',
         'maps',
         'foto',
-        'desa_id',
+        'desas_id',
     ];
 
-    public function desa()
+    public function desas()
     {
         return $this->belongsTo(Desa::class);
     }
 
-    public function prasarana()
+    public function prasaranas()
     {
-        return $this->hasOne(Prasarana::class);
+        return $this->hasMany(Prasarana::class, 'perumahans_id');
     }
 
-    public function sarana()
+    public function saranas()
     {
-        return $this->hasOne(Sarana::class);
+        return $this->hasMany(Sarana::class, 'perumahans_id');
     }
 
     public function utilitas()
     {
-        return $this->hasOne(Utilitas::class);
+        return $this->hasMany(Utilitas::class, 'perumahans_id');
     }
 }

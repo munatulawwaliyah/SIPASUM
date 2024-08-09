@@ -10,15 +10,15 @@ class Prasarana extends Model
     use HasFactory;
 
     protected $fillable = [
-        'perumahan_id',
+        'perumahans_id',
         'jaringan_jalan',
         'jaringan_drainase',
         'jaringan_sanitasi',
         'jaringan_persampahan',
     ];
 
-    public function perumahan()
+    public function perumahans()
     {
-        return $this->belongsTo(Perumahan::class);
+        return $this->belongsTo(Perumahan::class, 'perumahans_id');
     }
 }

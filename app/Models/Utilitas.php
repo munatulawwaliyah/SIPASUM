@@ -10,7 +10,7 @@ class Utilitas extends Model
     use HasFactory;
 
     protected $fillable = [
-        'perumahan_id',
+        'perumahans_id',
         'jaringan_penerangan',
         'jaringan_air_bersih',
         'jaringan_listrik',
@@ -20,8 +20,8 @@ class Utilitas extends Model
         'transportasi',
     ];
 
-    public function perumhan()
+    public function perumhans()
     {
-        return $this->belongsTo(Perumahan::class);
+        return $this->belongsTo(Perumahan::class, 'perumahans_id');
     }
 }

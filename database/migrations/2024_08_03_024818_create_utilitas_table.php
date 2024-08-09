@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('utilitas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('perumahan_id')->constrained('perumahan')->onDelete('cascade');
+            $table->foreignId('perumahans_id')->constrained('perumahans')->onDelete('cascade');
             $table->string('jaringan_penerangan')->nullable();
             $table->string('jaringan_air_bersih')->nullable();
             $table->boolean('jaringan_listrik');

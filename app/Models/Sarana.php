@@ -10,7 +10,7 @@ class Sarana extends Model
     use HasFactory;
 
     protected $fillable = [
-        'perumahan_id',
+        'perumahans_id',
         'peribadahan',
         'rekreasi_dan_olahraga',
         'pertamanan_dan_rth',
@@ -22,8 +22,8 @@ class Sarana extends Model
         'parkir',
     ];
 
-    public function perumahan()
+    public function perumahans()
     {
-        return $this->belongsTo(Perumahan::class);
+        return $this->belongsTo(Perumahan::class, 'perumahans_id');
     }
 }
