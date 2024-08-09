@@ -264,31 +264,31 @@
                                                 <div class="row my-3">
                                                     <div class="col-4 text-center">
                                                         @foreach ($p->prasaranas as $pra)
-                                                        <p><strong>Jaringan Jalan: </strong> {{ $pra->jaringan_jalan ? $pra->jaringan_jalan . 'm2' : '-'}}</p>
-                                                        <p><strong>Jaringan Drainase: </strong> {{ $pra->jaringan_drainase ? $pra->jaringan_drainase . 'm2' : '-'}}</p>
-                                                        <p><strong>Jaringan Sanitasi: </strong> {{ $pra->jaringan_sanitasi ?$pra->jaringan_sanitasi . 'm2' : '-'}}</p>
-                                                        <p><strong>Jaringan Persampahan: </strong>{{ $pra->jaringan_persampahan ? $pra->jaringan_persampahan . 'm2' : '-'}}</p>
+                                                        <p><strong>Jaringan Jalan: </strong> {{ $pra->jaringan_jalan ? $pra->jaringan_jalan . ' m2' : '-'}}</p>
+                                                        <p><strong>Jaringan Drainase: </strong> {{ $pra->jaringan_drainase ? $pra->jaringan_drainase . ' m2' : '-'}}</p>
+                                                        <p><strong>Jaringan Sanitasi: </strong> {{ $pra->jaringan_sanitasi ?$pra->jaringan_sanitasi . ' m2' : '-'}}</p>
+                                                        <p><strong>Jaringan Persampahan: </strong>{{ $pra->jaringan_persampahan ? $pra->jaringan_persampahan . ' m2' : '-'}}</p>
                                                         <p><strong>Prasarana Lainya : <br> </strong>{{ $pra->jaringan_persampahan ?: '-'}}</p>
                                                         @endforeach
                                                     </div>
                                                     <div class="col-4 text-center">
                                                         @foreach ($p->saranas as $sar)
-                                                        <p><strong> Peribadatan: </strong> {{ $sar->peribadahan ? $sar->peribadahan . 'm2' : '-' }}</p>
-                                                        <p><strong> Rekreasi & Olahraga: </strong> {{ $sar->rekreasi_dan_olahraga ? $sar->rekreasi_dan_olahraga . 'm2' : '-'}}</p>
-                                                        <p><strong> Pertamanan & RTH: </strong> {{ $sar->pertamanan_dan_rth ? $sar->pertamanan_dan_rth . 'm2' : '-'}}</p>
-                                                        <P><strong> Perniagaan: </strong> {{ $sar->perniagaan ? $sar->perniagaan . 'm2' : '-'}}</P>
-                                                        <p><strong> Fasilitas Sosial: </strong> {{ $sar->fasilitas_sosial ? $sar->fasilitas_sosial . 'm2' : '-'}}</p>
-                                                        <p><strong> Pendidikan: </strong> {{ $sar->pendidikan ? $sar->pendidikan . 'm2' : '-'}}</p>
-                                                        <p><strong> Kesehatan: </strong> {{ $sar->kesehatan ? $sar->kesehatan . 'm2' : '-'}}</p>
-                                                        <p><strong> Pemakaman: </strong> {{ $sar->pemakaman ? $sar->pemakaman . 'm2' : '-'}}</p>
-                                                        <p><strong> Parkir: </strong> {{ $sar->parkir ? $sar->parkir . 'm2' : '-'}}</p>
-                                                        <p><strong> Pelayan Umum dan Pemerintahan: </strong> {{ $sar->pelayanan_umum_dan_pemerintahan ? $sar->pelayanan_umum_dan_pemerintahan . 'm2' : '-'}}</p>
+                                                        <p><strong> Peribadatan: </strong> {{ $sar->peribadahan }}</p>
+                                                        <p><strong> Rekreasi & Olahraga: </strong> {{ $sar->rekreasi_dan_olahraga ? $sar->rekreasi_dan_olahraga . ' m2' : '-'}}</p>
+                                                        <p><strong> Pertamanan & RTH: </strong> {{ $sar->pertamanan_dan_rth ? $sar->pertamanan_dan_rth . ' m2' : '-'}}</p>
+                                                        <P><strong> Perniagaan: </strong> {{ $sar->perniagaan ? $sar->perniagaan . ' m2' : '-'}}</P>
+                                                        <p><strong> Fasilitas Sosial: </strong> {{ $sar->fasilitas_sosial ? $sar->fasilitas_sosial . ' m2' : '-'}}</p>
+                                                        <p><strong> Pendidikan: </strong> {{ $sar->pendidikan}}</p>
+                                                        <p><strong> Kesehatan: </strong> {{ $sar->kesehatan ? $sar->kesehatan . ' m2' : '-'}}</p>
+                                                        <p><strong> Pemakaman: </strong> {{ $sar->pemakaman ? $sar->pemakaman . ' m2' : '-'}}</p>
+                                                        <p><strong> Parkir: </strong> {{ $sar->parkir ? $sar->parkir . ' m2' : '-'}}</p>
+                                                        <p><strong> Pelayan Umum dan Pemerintahan: </strong> {{ $sar->pelayanan_umum_dan_pemerintahan}}</p>
                                                         <p><strong> Sarana Lainnya: <br> </strong> {{ $sar->sarana_lainnya ?: '-'}}</p>
                                                         @endforeach
                                                     </div>
                                                     <div class="col-4 text-center">
                                                         @foreach ($p->utilitas as $utl)
-                                                        <p><strong>Penerangan: </strong> {{ $utl->jaringan_penerangan ? $utl->jaringan_penerangan . 'Unit' : '-'}}</p>
+                                                        <p><strong>Penerangan: </strong> {{ $utl->jaringan_penerangan ? $utl->jaringan_penerangan . ' Unit' : '-'}}</p>
                                                         <p><strong>Air Bersih: </strong> {{ $utl->jaringan_air_bersih ?: '-'}}</p>
                                                         <p><strong>Listrik: </strong>{{ $utl->jaringan_listrik ? 'Tersedia' : 'Tidak Tersedia'}}</p>
                                                         <p><strong>Telpon: </strong>{{ $utl->jaringan_telpon ? 'Tersedia' : 'Tidak Tersedia'}}</p>
