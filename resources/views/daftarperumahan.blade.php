@@ -66,8 +66,8 @@
                 </button>
                     <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
-                            <a href="{{('/')}}" class="nav-item nav-link active">Beranda</a>
-                            <a href="" class="nav-item nav-link">Berita</a>
+                            <a href="{{('/')}}" class="nav-item nav-link">Beranda</a>
+                            <a href="{{'berita'}}" class="nav-item nav-link">Berita</a>
                             <a href="{{'daftarperumahan'}}" class="nav-item nav-link">Daftar Perumahan</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Serah Terima PSU</a>
@@ -96,7 +96,7 @@
         </div>
         <!-- Navbar End -->
 
-        <!-- Fruits Shop Start-->
+        <!-- Daftar Perumahan Start-->
         <div class="container my-5">
         <div class="container-fluid fruite py-5">
             <div class="container py-5">
@@ -133,8 +133,7 @@
             </div>
         </div>
     </div>
-
-        <!-- Fruits Shop End-->
+<!-- Daftar Perumahan End -->
 
         <!-- Modal Detail Start-->
         @foreach ($perumahans as $p)
@@ -278,7 +277,7 @@
                             <p>Email: Example@gmail.com</p>
                             <p>Phone: +0123 4567 8910</p>
                             <p>Payment Accepted</p>
-                            <img src="img/payment.png" class="img-fluid" alt="">
+                            <img src="" class="img-fluid" alt="">
                         </div>
                     </div>
                 </div>
@@ -294,7 +293,7 @@
                         <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span>
                     </div>
                     <div class="col-md-6 my-auto text-center text-md-end text-white">
-                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                        Designed By <a class="border-bottom" href="">HTML Codex</a>
                     </div>
                 </div>
             </div>

@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Controllers\AdminBeritaController;
 use App\Http\Controllers\AdminPerumahanController;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\DaptarperumController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Perumahan;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::match(['get', 'post'], '/', [HomeController::class, 'index']);
+Route::get('/getDesa/{kecamatan_id}', [HomeController::class, 'getDesa']);
+
 Route::get('/daftarperumahan', [DaptarperumController::class, 'index']);
+Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -31,9 +34,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/perumahan/{id}', [AdminPerumahanController::class, 'delete'])->name('perumahan.delete');
     Route::put('/perumahan/{id}', [AdminPerumahanController::class, 'update'])->name('perumahan.update');
     Route::get('/perumahan/{kecamatans_id}', [AdminPerumahanController::class, 'getDesa']);
+});
 
-
-    // Route::resource('perumahan', AdminPerumahanController::class);
+Route::middleware('auth')->group(function () {
+    Route::get('/adminberita', [AdminBeritaController::class, 'index', 'show'])->name('adminberita');
+    Route::post('/adminberita', [AdminBeritaController::class, 'store'])->name('adminberita.store');
+    Route::put('/adminberita/{id}', [AdminBeritaController::class, 'update'])->name('adminberita.update');
+    Route::delete('/adminberita/{id}', [AdminBeritaController::class, 'delete'])->name('adminberita.delete');
 
 });
 

@@ -20,23 +20,33 @@ class HomeController extends Controller
         // Start the perumahan query
         $perumahanQuery = Perumahan::query()->with('desas.kecamatans');
 
-        // Apply filters if they exist
-        if ($request->filled('kecamatan_id')) {
-            $perumahanQuery->whereHas('desas.kecamatans', function($query) use ($request) {
-                $query->where('id', $request->kecamatan_id);
+        if ($request->has('kecamatan_id') && $request->kecamatan_id) {
+            $perumahanQuery->whereHas('desas.kecamatans', function($q) use ($request) {
+                $q->where('id', $request->kecamatan_id);
             });
         }
 
-        if ($request->filled('desa_id')) {
-            $perumahanQuery->where('desas_id', $request->desa_id);
+        if ($request->has('desa_id') && $request->desa_id) {
+            $perumahanQuery->whereHas('desas', function($q) use ($request) {
+                $q->where('id', $request->desa_id);
+            });
         }
 
-        if ($request->filled('search')) {
-            $perumahanQuery->where('nama_perumahan', 'like', '%' . $request->search . '%');
+        if ($request->has('search') && $request->search) {
+            $perumahanQuery->where('nama_perumahan', 'like', '%'.$request->search.'%');
         }
 
         // Get the filtered perumahan results
         $perumahans = $perumahanQuery->get();
+
+        // Get the count of all Perumahan
+        $jumlahPerumahan = Perumahan::count();
+
+        // Get the count of Perumahan with status_serah_terima_psu = true (already handed over)
+        $sudahSerahTerima = Perumahan::where('status_serah_terima_psu', true)->count();
+
+        // Get the count of Perumahan with status_serah_terima_psu = false (not handed over)
+        $belumSerahTerima = Perumahan::where('status_serah_terima_psu', false)->count();
 
         // Fetch related prasaranas, saranas, and utilitas for each perumahan
         $perumahans->each(function ($perumahan) {
@@ -45,6 +55,13 @@ class HomeController extends Controller
             $perumahan->utilitas = Utilitas::where('perumahans_id', $perumahan->id)->get();
         });
 
-        return view('welcome', compact('perumahans', 'kecamatans', 'desas'));
+        return view('welcome', compact('perumahans', 'kecamatans', 'desas', 'jumlahPerumahan', 'sudahSerahTerima', 'belumSerahTerima'));
     }
+
+    public function getDesa($kecamatan_id)
+    {
+        $desas = Desa::where('kecamatans_id', $kecamatan_id)->get();
+        return response()->json($desas);
+    }
+
 }

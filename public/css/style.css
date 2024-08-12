@@ -188,22 +188,25 @@
     font-size: 12px;
 }
 
+.main-content {
+    padding-top: 100px; /* Adjust as needed */
+}
+
 /*** Hero Header ***/
-/* .hero-header {
-    background: linear-gradient(rgba(248, 223, 173, 0.1), rgba(248, 223, 173, 0.1)), url(../img/Background.png);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-} */
 .hero-header {
-    height: 100vh; /* Kontainer mengambil seluruh tinggi viewport */
-    padding: 0; /* Hilangkan padding agar gambar benar-benar full screen */
+    height: 100vh; 
+    padding: 0; 
+    margin-bottom: 0;
+}
+
+.container.my-3 {
+    margin-top: -20px; /* Atur sesuai kebutuhan untuk mengurangi jarak */
 }
 
 .carousel-inner img {
-    height: 100vh; /* Gambar mengambil seluruh tinggi viewport */
-    width: 100vw; /* Gambar mengambil seluruh lebar viewport */
-    object-fit: cover; /* Gambar menutupi kontainer tanpa mengubah aspek rasio */
+    height: 100vh; 
+    width: 100vw; 
+    object-fit: cover; 
 }
 
 .carousel-inner {
@@ -211,12 +214,8 @@
 }
 
 .carousel, .carousel-item {
-    height: 85%;
+    height: 95%;
 }
-
-/* .carousel-item {
-    position: relative;
-} */
 
 .carousel-item a {
     position: absolute;
@@ -226,12 +225,6 @@
     font-size: 25px;
     background: linear-gradient(rgba(255, 181, 36, 0.7), rgba(255, 181, 36, 0.7));
 }
-
-/* .carousel-inner img {
-    max-height: 500px; 
-    width: 100%;
-    object-fit: cover; 
-} */
 
 .carousel-control-next,
 .carousel-control-prev {
@@ -275,18 +268,12 @@
     }
 }
 
-.hero-header .bg-light {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
 .hero-header h1 {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 .hero-header .counter {
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
 }
 .hero-header .counter h5 {
     font-size: 1rem;

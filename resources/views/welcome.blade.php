@@ -18,6 +18,7 @@
 
         <!-- Icon Font Stylesheet -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
         <!-- Libraries Stylesheet -->
@@ -66,8 +67,8 @@
                 </button>
                     <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
-                            <a href="{{('/')}}" class="nav-item nav-link active">Beranda</a>
-                            <a href="" class="nav-item nav-link">Berita</a>
+                            <a href="{{('/')}}" class="nav-item nav-link">Beranda</a>
+                            <a href="{{'berita'}}" class="nav-item nav-link">Berita</a>
                             <a href="{{'daftarperumahan'}}" class="nav-item nav-link">Daftar Perumahan</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Serah Terima PSU</a>
@@ -130,23 +131,23 @@
                 <div class="row g-2 justify-content-center">
                     <div class="col-md-6 col-lg-3 col-xl-4">
                         <div class="counter bg-white rounded text-center p-2">
-                            <i class="fa fa-users text-secondary"></i>
-                            <h4>satisfied customers</h4>
-                            <h1>1963</h1>
+                            <i class="fa fa-home text-secondary"></i>
+                            <h4>Jumlah <br> Perumahan</h4>
+                            <h1>{{ $jumlahPerumahan }}</h1>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3 col-xl-4">
                         <div class="counter bg-white rounded text-center p-2">
-                            <i class="fa fa-users text-secondary"></i>
-                            <h4>quality of service</h4>
-                            <h1>99%</h1>
+                        <i class="fa-solid fa-handshake text-secondary"></i>
+                            <h4>Sudah <br> Serah Terima PSU</h4>
+                            <h1>{{$sudahSerahTerima}}</h1>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3 col-xl-4">
                         <div class="counter bg-white rounded text-center p-2">
-                            <i class="fa fa-users text-secondary"></i>
-                            <h4>quality certificates</h4>
-                            <h1>33</h1>
+                        <i class="fa-solid fa-handshake-slash text-secondary"></i>
+                            <h4>Belum <br> Serah Terima PSU</h4>
+                            <h1>{{ $belumSerahTerima}}</h1>
                         </div>
                     </div>
                 </div>
@@ -160,35 +161,29 @@
         <div class="container my-3">
             <div class="row mb-4 mt-4">
                 <!-- Filter Section -->
-                <div class="col-md-4 mb-3 mb-md-0">
+                <div class="col-md-8 mb-3 mb-md-0">
                     <form id="filter-form" action="{{ url('/') }}" method="get">
-                        <div class="mb-3">
-                            <label for="kecamatan" class="form-label">Kecamatan</label>
-                            <select class="form-select" id="kecamatan" name="kecamatan_id">
-                                <option value="">Choose...</option>
-                                @foreach($kecamatans as $kec)
-                                    <option value="{{ $kec->id }}">{{ $kec->nama_kecamatan }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <form id="desa-form" action="{{ url('/') }}" method="get">
-                        <div class="mb-3">
-                            <label for="desa" class="form-label">Desa</label>
-                            <select class="form-select" id="desa" name="desa_id">
-                                <option value="">Choose...</option>
-                                @foreach($desas as $d)
-                                    <option value="{{ $d->id }}">{{ $d->nama_desa }}</option>
-                                @endforeach
-                            </select>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="kecamatans" class="form-label">Kecamatan</label>
+                                <select class="form-select" id="kecamatans" name="kecamatan_id">
+                                    <option value="">Choose...</option>
+                                    @foreach($kecamatans as $kec)
+                                        <option value="{{ $kec->id }}">{{ $kec->nama_kecamatan }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="desas" class="form-label">Desa</label>
+                                <select class="form-select" id="desas" name="desa_id">
+                                    <option value="">Choose...</option>
+                                </select>
+                            </div>
                         </div>
                     </form>
                 </div>
                 <div class="col-md-4">
-                    <form id="search-form" action="" method="post">
-                        @csrf
+                    <form id="search-form" action="{{ url('/') }}" method="get">
                         <div class="mb-3">
                             <label for="search" class="form-label">Search</label>
                             <div class="input-group">
@@ -198,53 +193,61 @@
                         </div>
                     </form>
                 </div>
+            </div>
         </div>
         <!-- Filter & Search End -->
 
-
         <!-- Tabel Perumahan Start -->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Perumahan</th>
-                                <th>Kecamatan</th>
-                                <th>Desa</th>
-                                <th>Status</th>
-                                <th>Jumlah Unit</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($perumahans as $p)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $p->nama_perumahan }}</td>
-                                <td>{{ $p->desas->kecamatans->nama_kecamatan }}</td>
-                                <td>{{ $p->desas->nama_desa }}</td>
-                                <td>{{ $p->status_serah_terima_psu ? 'Sudah' : 'Belum' }}</td>
-                                <td>{{ $p->jumlah_unit }}</td>
-                                <td><a href="" data-bs-toggle="modal" data-bs-target="#myModal-{{ $p->id }}">View</a></td>
-                            </tr>
-                            </div>
-                            <!-- Tabel Perumahan End -->
+        <div class="container my-3">
+            <div class="row mb-4 mt-4">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama Perumahan</th>
+                                    <th>Kecamatan</th>
+                                    <th>Desa</th>
+                                    <th>Status</th>
+                                    <th>Jumlah Unit</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($perumahans as $p)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $p->nama_perumahan }}</td>
+                                    <td>{{ $p->desas->kecamatans->nama_kecamatan }}</td>
+                                    <td>{{ $p->desas->nama_desa }}</td>
+                                    <td>{{ $p->status_serah_terima_psu ? 'Sudah' : 'Belum' }}</td>
+                                    <td>{{ $p->jumlah_unit }}</td>
+                                    <td><a href="" data-bs-toggle="modal" data-bs-target="#myModal-{{ $p->id }}">View</a></td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Tabel Perumahan End -->
 
-                            <!-- Modal Detail Start-->
-                            <div class="modal fade" id="myModal-{{ $p->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-{{ $p->id }}" aria-hidden="true">
-                                <div class="modal-dialog modal-xl" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="myModalLabel-{{ $p->id }}">Detail Perumahan</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="container">
-                                                <div class="row">
-                                                    <div class="col-12 text-center">
-                                                        <img src="uploads/{{ $p->foto }}" alt="Foto Perumahan" class="img-fluid mb-3" style="max-height: 300px;">
+        <!-- Modal Detail Start-->
+        @foreach ($perumahans as $p)
+        <div class="modal fade" id="myModal-{{ $p->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-{{ $p->id }}" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="myModalLabel-{{ $p->id }}">Detail Perumahan</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-12 text-center">
+                                                    <img src="uploads/{{ $p->foto }}" alt="Foto Perumahan" class="img-fluid mb-3" style="max-height: 300px;">
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -328,7 +331,7 @@
         </div>
     </div>
 </div>
-<!-- Modal Detail End -->
+<!-- Modal Detail End -->   
 
 
         <!-- Footer Start -->
@@ -374,7 +377,7 @@
                             <p>Email: Example@gmail.com</p>
                             <p>Phone: +0123 4567 8910</p>
                             <p>Payment Accepted</p>
-                            <img src="img/payment.png" class="img-fluid" alt="">
+                            <img src="" class="img-fluid" alt="">
                         </div>
                     </div>
                 </div>
@@ -390,7 +393,7 @@
                         <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span>
                     </div>
                     <div class="col-md-6 my-auto text-center text-md-end text-white">
-                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                        Designed By <a class="border-bottom" href="">HTML Codex</a>
                     </div>
                 </div>
             </div>
@@ -410,9 +413,11 @@
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/lightbox/js/lightbox.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="js/filter.js"></script>
     </body>
 
 </html>
