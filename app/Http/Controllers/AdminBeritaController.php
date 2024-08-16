@@ -20,7 +20,7 @@ class AdminBeritaController extends Controller
             'judul' => 'required|string|max:255',
             'headline' => 'required|string|max:255',
             'deskripsi' => 'required|string',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'tanggal' => 'required|date',
             'waktu' => 'required|date_format:H:i',
         ]);
@@ -43,12 +43,12 @@ class AdminBeritaController extends Controller
     {
         // Validasi input
         $validatedData = $request->validate([
-            'judul' => 'required|string|max:255',
-            'headline' => 'required|string|max:255',
-            'deskripsi' => 'required|string',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'tanggal' => 'required|date',
-            'waktu' => 'required|date_format:H:i',
+            'judul' => 'nullable|string|max:255',
+            'headline' => 'nullable|string|max:255',
+            'deskripsi' => 'nullable|string',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'tanggal' => 'nullable|date',
+            'waktu' => 'nullable|date_format:H:i',
         ]);
 
         // Temukan data berita berdasarkan id
@@ -65,7 +65,7 @@ class AdminBeritaController extends Controller
         }
 
         // Update data di database
-        $berita->update($validatedData);
+        $berita->update(array_filter($validatedData));
         
         // Redirect atau kembalikan response sesuai kebutuhan
         return redirect()->back()->with('success', 'Berita berhasil diperbarui.');

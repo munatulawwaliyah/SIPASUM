@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Desa;
+use App\Models\File;
 use App\Models\Kecamatan;
 use App\Models\Perumahan;
 use App\Models\Prasarana;
@@ -55,7 +56,15 @@ class HomeController extends Controller
             $perumahan->utilitas = Utilitas::where('perumahans_id', $perumahan->id)->get();
         });
 
-        return view('welcome', compact('perumahans', 'kecamatans', 'desas', 'jumlahPerumahan', 'sudahSerahTerima', 'belumSerahTerima'));
+        $formatDanPersyaratan = File::where('nama_file', 'Format dan Persyaratan')->First();
+        $UU = File::where('nama_file', 'Undang-Undang')->First();
+        $PP14 = File::where('nama_file', 'PP NO 14')->First();
+        $PP64 = File::where('nama_file', 'PP NO 64')->First();
+        $Permen = File::where('nama_file', 'Peraturan Mentri')->First();
+        $Perda = File::where('nama_file', 'Peraturan Daerah')->First();
+        $Perbup = File::where('nama_file', 'Peraturan Bupati')->First();
+
+        return view('welcome', compact('perumahans', 'kecamatans', 'desas', 'jumlahPerumahan', 'sudahSerahTerima', 'belumSerahTerima', 'formatDanPersyaratan', 'UU', 'PP14', 'PP64', 'Permen', 'Perda', 'Perbup'));
     }
 
     public function getDesa($kecamatan_id)

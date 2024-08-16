@@ -118,6 +118,7 @@
                                 <p><strong>Nama Developer:</strong> {{ $p->nama_developer }}</p>
                             </div>
                         </div>
+                        @if($p->status_serah_terima_psu == 1)
                         <div class="row my-3">
                             <div class="col-12 text-center bg-light p-2">Jenis PSU</div>
                             <div class="col-4 text-center bg-light p-2">Prasarana</div>
@@ -163,6 +164,7 @@
                         </div>
                         <!-- Visual separator -->
                         <hr>
+                        @endif
                         <div class="row my-3">
                             <div class="col-4 text-center bg-light p-2">Luas Perumahan: <br><strong>{{ $p->luas_lahan_perumahan }} m2</strong></div>
                             <div class="col-4 text-center bg-light p-2">Luas Lahan Non Efektif: <br><strong>{{ $p->luas_lahan_non_efektif }} m2</strong></div>
@@ -245,6 +247,16 @@
                             <input type="number" class="form-control" id="jumlah_unit" name="jumlah_unit" required>
                         </div>
                         <div class="mb-3">
+                            <label for="maps" class="form-label">Link Maps</label>
+                            <input type="url" class="form-control" id="maps" name="maps" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="foto" class="form-label">Foto</label>
+                            <div id="preview-container" class="mb-3"></div> <!-- Tempat untuk menampilkan pratinjau gambar -->
+                            <input class="form-control" type="file" id="foto" name="foto" required>
+                            <div id="file-limit-error" class="text-danger d-none">Maksimal 5 foto dapat diunggah.</div>
+                        </div>
+                        <div class="mb-3">
                             <label>Status Serah Terima PSU</label>
                             <div class="d-flex">
                                 <div class="form-check me-3">
@@ -257,18 +269,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="maps" class="form-label">Link Maps</label>
-                            <input type="url" class="form-control" id="maps" name="maps" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="foto" class="form-label">Foto</label>
-                            <div id="preview-container" class="mb-3"></div> <!-- Tempat untuk menampilkan pratinjau gambar -->
-                            <input class="form-control" type="file" id="foto" name="foto[]" multiple required>
-                            <div id="file-limit-error" class="text-danger d-none">Maksimal 5 foto dapat diunggah.</div>
-                        </div>
 
-
+                        
                         <h5 class="mt-4">Prasarana</h5>
                         <div class="d-flex mb-3">
                             <div class="me-2">
@@ -290,14 +292,16 @@
                         </div>
                         <div class="mb-3">
                             <label for="prasarana_lainnya" class="form-label">Prasrana lainnya</label>
-                            <input type="text" class="form-control" id="prasarana_lainnya" name="prasarana_lainnya" required>
+                            <input type="text" class="form-control" id="prasarana_lainnya" name="prasarana_lainnya" inputmode="string">
                         </div>
+                        
 
+                        
                         <h5 class="mt-4">Sarana</h5>
                         <div class="d-flex mb-3">
                             <div class="me-2">
                                 <label for="peribadahan" class="form-label">Peribadatan</label>
-                                <input type="text" id="peribadahan" class="form-control" name="peribadahan" inputmode="string" required>
+                                <input type="text" id="peribadahan" class="form-control" name="peribadahan" inputmode="string">
                             </div>
                             <div class="me-2">
                                 <label for="rekreasi_olahraga" class="form-label">Rekreasi dan Olahraga</label>
@@ -320,7 +324,7 @@
                             </div>
                             <div>
                                 <label for="pendidikan" class="form-label">Pendidikan</label>
-                                <input type="text" id="pendidikan" class="form-control" name="pendidikan" inputmode="string" required>
+                                <input type="text" id="pendidikan" class="form-control" name="pendidikan" inputmode="string">
                             </div>
                         </div>
                         <div class="d-flex mb-3">
@@ -340,16 +344,18 @@
                         <div class="d-flex mb-3">
                             <div class="me-2">
                                 <label for="pelayanan_umum_dan_pemerintahan" class="form-label">Pelayanan Umum dan Pemerintahan</label>
-                                <input type="text" id="pelayanan_umum_dan_pemerintahan" class="form-control" name="pelayanan_umum_dan_pemerintahan" inputmode="string" required>
+                                <input type="text" id="pelayanan_umum_dan_pemerintahan" class="form-control" name="pelayanan_umum_dan_pemerintahan" inputmode="string">
                             </div>
                         </div>
                         <div class="mb-3">
                             <div>
                                 <label for="sarana_lainnya" class="form-label">Sarana Lainnya</label>
-                                <input type="text" class="form-control" id="sarana_lainnya" name="sarana_lainnya" required>
+                                <input type="text" class="form-control" id="sarana_lainnya" name="sarana_lainnya" inputmode="string" >
                             </div>
                         </div>
+                        
 
+                        
                         <h5 class="mt-4">Utilitas</h5>
                         <div class="d-flex mb-3">
                             <div class="me-2">
@@ -365,11 +371,11 @@
                             <label>Jaringan Listrik</label>
                             <div class="d-flex">
                                 <div class="form-check me-3">
-                                    <input class="form-check-input" type="radio" name="jaringan_listrik" id="jaringan_listrik1" value="1" required>
+                                    <input class="form-check-input" type="radio" name="jaringan_listrik" id="jaringan_listrik1" value="1" >
                                     <label class="form-check-label" for="jaringan_listrik1">Tersedia</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="jaringan_listrik" id="jaringan_listrik2" value="0" required>
+                                    <input class="form-check-input" type="radio" name="jaringan_listrik" id="jaringan_listrik2" value="0" >
                                     <label class="form-check-label" for="jaringan_listrik2">Tidak Tersedia</label>
                                 </div>
                             </div>
@@ -378,11 +384,11 @@
                             <label>Jaringan Telepon</label>
                             <div class="d-flex">
                                 <div class="form-check me-3">
-                                    <input class="form-check-input" type="radio" name="jaringan_telpon" id="jaringan_telpon1" value="1" required>
+                                    <input class="form-check-input" type="radio" name="jaringan_telpon" id="jaringan_telpon1" value="1" >
                                     <label class="form-check-label" for="jaringan_telpon1">Tersedia</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="jaringan_telpon" id="jaringan_telpon2" value="0" required>
+                                    <input class="form-check-input" type="radio" name="jaringan_telpon" id="jaringan_telpon2" value="0" >
                                     <label class="form-check-label" for="jaringan_telpon2">Tidak Tersedia</label>
                                 </div>
                             </div>
@@ -391,11 +397,11 @@
                             <label>Jaringan Pemadam Kebakaran</label>
                             <div class="d-flex">
                                 <div class="form-check me-3">
-                                    <input class="form-check-input" type="radio" name="jaringan_pemadam_kebakaran" id="jaringan_pemadam_kebakaran1" value="1" required>
+                                    <input class="form-check-input" type="radio" name="jaringan_pemadam_kebakaran" id="jaringan_pemadam_kebakaran1" value="1" >
                                     <label class="form-check-label" for="jaringan_pemadam_kebakaran1">Tersedia</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="jaringan_pemadam_kebakaran" id="jaringan_pemadam_kebakaran2" value="0" required>
+                                    <input class="form-check-input" type="radio" name="jaringan_pemadam_kebakaran" id="jaringan_pemadam_kebakaran2" value="0" >
                                     <label class="form-check-label" for="jaringan_pemadam_kebakaran2">Tidak Tersedia</label>
                                 </div>
                             </div>
@@ -404,11 +410,11 @@
                             <label>Gas</label>
                             <div class="d-flex">
                                 <div class="form-check me-3">
-                                    <input class="form-check-input" type="radio" name="gas" id="gas1" value="1" required>
+                                    <input class="form-check-input" type="radio" name="gas" id="gas1" value="1" >
                                     <label class="form-check-label" for="gas1">Tersedia</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gas" id="gas2" value="0" required>
+                                    <input class="form-check-input" type="radio" name="gas" id="gas2" value="0" >
                                     <label class="form-check-label" for="gas2">Tidak Tersedia</label>
                                 </div>
                             </div>
@@ -417,11 +423,11 @@
                             <label>Jaringan Transportasi</label>
                             <div class="d-flex">
                                 <div class="form-check me-3">
-                                    <input class="form-check-input" type="radio" name="transportasi" id="transportasi1" value="1" required>
+                                    <input class="form-check-input" type="radio" name="transportasi" id="transportasi1" value="1" >
                                     <label class="form-check-label" for="transportasi1">Tersedia</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="transportasi" id="transportasi2" value="0" required>
+                                    <input class="form-check-input" type="radio" name="transportasi" id="transportasi2" value="0" >
                                     <label class="form-check-label" for="transportasi2">Tidak Tersedia</label>
                                 </div>
                             </div>
@@ -444,8 +450,9 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="crudForm" action="{{ route('perumahan.update', ['id'=> $perumahan->id]) }}" method="POST" enctype="multipart/form-data">
+                    <form id="crudForm-{{ $perumahan->id }}" action="{{ route('perumahan.update', ['id'=> $perumahan->id]) }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="mb-3">
                             <label for="nama_perumahan" class="form-label">Nama Perumahan</label>
                             <input type="text" class="form-control" id="nama_perumahan" name="nama_perumahan" value="{{ $perumahan->nama_perumahan}}">
@@ -455,7 +462,9 @@
                             <select id="kecamatans_id" class="form-select" name="kecamatans_id">
                                 <option value="">Pilih Kecamatan</option>
                                 @foreach($kecamatans as $kecamatan)
-                                <option value="{{ $kecamatan->id }}">{{ $kecamatan->nama_kecamatan }}</option>
+                                <option value="{{ $kecamatan->id }}" 
+                                {{ old('kecamatans_id', isset($perumahan) ? $perumahan->kecamatans_id : '') == $kecamatan->id ? 'selected' : '' }}>
+                                {{ $kecamatan->nama_kecamatan }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -487,6 +496,16 @@
                             <input type="number" class="form-control" id="jumlah_unit" name="jumlah_unit" value="{{ $perumahan->jumlah_unit}}">
                         </div>
                         <div class="mb-3">
+                            <label for="maps" class="form-label">Link Maps</label>
+                            <input type="url" class="form-control" id="maps" name="maps" value="{{$perumahan->maps}}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="foto" class="form-label">Foto</label>
+                            <div id="preview-container" class="mb-3"></div> <!-- Tempat untuk menampilkan pratinjau gambar -->
+                            <input class="form-control" type="file" id="foto" name="foto" value="{{$perumahan->foto}}">
+                            <small class="form-text text-muted">Biarkan kosong jika tidak ingin mengubah gambar.</small>
+                        </div>
+                        <div class="mb-3">
                             <label>Status Serah Terima PSU</label>
                             <div class="d-flex">
                                 <div class="form-check me-3">
@@ -500,17 +519,6 @@
                                     <label class="form-check-label" for="status_serah_terima_psu2">Belum</label>
                                 </div>
                             </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="maps" class="form-label">Link Maps</label>
-                            <input type="url" class="form-control" id="maps" name="maps" value="{{$perumahan->maps}}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="foto" class="form-label">Foto</label>
-                            <div id="preview-container" class="mb-3"></div> <!-- Tempat untuk menampilkan pratinjau gambar -->
-                            <input class="form-control" type="file" id="foto" name="foto[]" multiple required>
-                            <div id="file-limit-error" class="text-danger d-none">Maksimal 5 foto dapat diunggah.</div>
-                            <small class="form-text text-muted">Biarkan kosong jika tidak ingin mengubah gambar.</small>
                         </div>
                         <!-- Prasarana Start -->
                         @foreach ($perumahan->prasaranas as $pra)
@@ -614,12 +622,12 @@
                             <div class="d-flex">
                                 <div class="form-check me-3">
                                     <input class="form-check-input" type="radio" name="jaringan_listrik" id="jaringan_listrik1" value="1"
-                                        {{ old('jaringan_listrik', isset($utl) ? $utl->jaringan_listrik : '') == '1' ? 'checked' : '' }} required>
+                                        {{ old('jaringan_listrik', isset($utl) ? $utl->jaringan_listrik : '') == '1' ? 'checked' : '' }} >
                                     <label class="form-check-label" for="jaringan_listrik1">Tersedia</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="jaringan_listrik" id="jaringan_listrik2" value="0"
-                                        {{ old('jaringan_listrik', isset($utl) ? $utl->jaringan_listrik : '') == '0' ? 'checked' : '' }} required>
+                                        {{ old('jaringan_listrik', isset($utl) ? $utl->jaringan_listrik : '') == '0' ? 'checked' : '' }} >
                                     <label class="form-check-label" for="jaringan_listrik2">Tidak Tersedia</label>
                                 </div>
                             </div>
@@ -629,12 +637,12 @@
                             <div class="d-flex">
                                 <div class="form-check me-3">
                                     <input class="form-check-input" type="radio" name="jaringan_telpon" id="jaringan_telpon1" value="1"
-                                        {{ old('jaringan_telpon', isset($utl) ? $utl->jaringan_telpon : '') == '1' ? 'checked' : '' }} required>
+                                        {{ old('jaringan_telpon', isset($utl) ? $utl->jaringan_telpon : '') == '1' ? 'checked' : '' }} >
                                     <label class="form-check-label" for="jaringan_telpon1">Tersedia</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="jaringan_telpon" id="jaringan_telpon2" value="0"
-                                        {{ old('jaringan_telpon', isset($utl) ? $utl->jaringan_telpon : '') == '0' ? 'checked' : '' }} required>
+                                        {{ old('jaringan_telpon', isset($utl) ? $utl->jaringan_telpon : '') == '0' ? 'checked' : '' }} >
                                     <label class="form-check-label" for="jaringan_telpon2">Tidak Tersedia</label>
                                 </div>
                             </div>
@@ -643,11 +651,13 @@
                             <label>Jaringan Pemadam Kebakaran</label>
                             <div class="d-flex">
                                 <div class="form-check me-3">
-                                    <input class="form-check-input" type="radio" name="jaringan_pemadam_kebakaran" id="jaringan_pemadam_kebakaran1" value="1" required>
+                                    <input class="form-check-input" type="radio" name="jaringan_pemadam_kebakaran" id="jaringan_pemadam_kebakaran1" value="1" 
+                                    {{ old('jaringan_pemadam_kebakaran', isset($utl) ? $utl->jaringan_pemadam_kebakaran : '') == '1' ? 'checked' : '' }} >
                                     <label class="form-check-label" for="jaringan_pemadam_kebakaran1">Tersedia</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="jaringan_pemadam_kebakaran" id="jaringan_pemadam_kebakaran2" value="0" required>
+                                    <input class="form-check-input" type="radio" name="jaringan_pemadam_kebakaran" id="jaringan_pemadam_kebakaran2" value="0" 
+                                    {{ old('jaringan_pemadam_kebakaran', isset($utl) ? $utl->jaringan_pemadam_kebakaran : '') == '0' ? 'checked' : '' }} >
                                     <label class="form-check-label" for="jaringan_pemadam_kebakaran2">Tidak Tersedia</label>
                                 </div>
                             </div>
@@ -656,11 +666,13 @@
                             <label>Gas</label>
                             <div class="d-flex">
                                 <div class="form-check me-3">
-                                    <input class="form-check-input" type="radio" name="gas" id="gas1" value="1" required>
+                                    <input class="form-check-input" type="radio" name="gas" id="gas1" value="1" 
+                                    {{ old('gas', isset($utl) ? $utl->gas : '') == '1' ? 'checked' : '' }} >
                                     <label class="form-check-label" for="gas1">Tersedia</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gas" id="gas2" value="0" required>
+                                    <input class="form-check-input" type="radio" name="gas" id="gas2" value="0" 
+                                    {{ old('gas', isset($utl) ? $utl->gas : '') == '0' ? 'checked' : '' }} >
                                     <label class="form-check-label" for="gas2">Tidak Tersedia</label>
                                 </div>
                             </div>
@@ -669,11 +681,13 @@
                             <label>Jaringan Transportasi</label>
                             <div class="d-flex">
                                 <div class="form-check me-3">
-                                    <input class="form-check-input" type="radio" name="transportasi" id="transportasi1" value="1" required>
+                                    <input class="form-check-input" type="radio" name="transportasi" id="transportasi1" value="1" 
+                                    {{ old('transportasi', isset($utl) ? $utl->transportasi : '') == '1' ? 'checked' : '' }} >
                                     <label class="form-check-label" for="transportasi1">Tersedia</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="transportasi" id="transportasi2" value="0" required>
+                                    <input class="form-check-input" type="radio" name="transportasi" id="transportasi2" value="0" 
+                                    {{ old('transportasi', isset($utl) ? $utl->transportasi : '') == '0' ? 'checked' : '' }} >
                                     <label class="form-check-label" for="transportasi2">Tidak Tersedia</label>
                                 </div>
                             </div>
@@ -727,41 +741,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="/js/desa.js"></script>
-    <script>
-        document.getElementById('foto').addEventListener('change', function() {
-            const maxFiles = 5;
-            const fileInput = this;
-            const fileCount = fileInput.files.length;
-            const previewContainer = document.getElementById('preview-container');
-            const errorDiv = document.getElementById('file-limit-error');
 
-            // Clear previous previews
-            previewContainer.innerHTML = '';
-
-            if (fileCount > maxFiles) {
-                errorDiv.classList.remove('d-none');
-                fileInput.value = ''; // Clear the input
-            } else {
-                errorDiv.classList.add('d-none');
-                // Create previews
-                Array.from(fileInput.files).forEach(file => {
-                    if (file.type.startsWith('image/')) {
-                        const reader = new FileReader();
-                        reader.onload = function(e) {
-                            const img = document.createElement('img');
-                            img.src = e.target.result;
-                            img.style.maxWidth = '150px'; // Adjust size as needed
-                            img.style.marginRight = '10px';
-                            img.style.marginBottom = '10px';
-                            previewContainer.appendChild(img);
-                        };
-                        reader.readAsDataURL(file);
-                    }
-                });
-            }
-        });
-    </script>
-
+    
 </body>
 
 </html>

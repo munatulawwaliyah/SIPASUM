@@ -192,6 +192,11 @@
     padding-top: 100px; /* Adjust as needed */
 }
 
+.text-justify {
+    text-align: justify;
+}
+
+
 /*** Hero Header ***/
 .hero-header {
     height: 100vh; 

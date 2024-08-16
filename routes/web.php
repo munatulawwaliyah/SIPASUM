@@ -6,6 +6,8 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\DaptarperumController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TentangController;
+use App\Http\Controllers\UploadFileController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -17,6 +19,7 @@ Route::get('/getDesa/{kecamatan_id}', [HomeController::class, 'getDesa']);
 
 Route::get('/daftarperumahan', [DaptarperumController::class, 'index']);
 Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
+Route::get('/tentang', [TentangController::class, 'index'])->name('tentang.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -42,6 +45,13 @@ Route::middleware('auth')->group(function () {
     Route::put('/adminberita/{id}', [AdminBeritaController::class, 'update'])->name('adminberita.update');
     Route::delete('/adminberita/{id}', [AdminBeritaController::class, 'delete'])->name('adminberita.delete');
 
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/uploadfile', [UploadFileController::class, 'index'])->name('uploadfile');
+    Route::post('/uploadfile', [UploadFileController::class, 'create'])->name('uploadfile.create');
+    Route::put('/uploadfile/{id}',[UploadFileController::class, 'update'])->name('uploadfile.update');
+    Route::delete('/uploadfile/{id}', [UploadFileController::class, 'delete'])->name('uploadfile.delete');
 });
 
 require __DIR__.'/auth.php';

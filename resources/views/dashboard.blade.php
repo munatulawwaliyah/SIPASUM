@@ -34,36 +34,45 @@
         </x-slot>
 
         <div class="py-12">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="p-6 text-gray-900">
-                <!-- Card section -->
-                <div class="flex space-x-4">
-                    <a href="perumahan" class="card-link" style="text-decoration: none;">
-                        <div class="card" style="width: 18rem;">
-                            <img src="img/fruite-item-1.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h1 class="card-title">Perumahan</h1>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    <!-- Card section -->
+                    <div class="flex space-x-4">
+                        <a href="perumahan" class="card-link" style="text-decoration: none;">
+                            <div class="card" style="width: 18rem;">
+                                <img src="img/fruite-item-1.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h1 class="card-title">Perumahan</h1>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                    
-                    <!-- New Card -->
-                    <a href="adminberita" class="card-link" style="text-decoration: none;">
-                        <div class="card" style="width: 18rem;">
-                            <img src="img/fruite-item-6.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h1 class="card-title">Berita</h1>
+                        </a>
+                        
+                        <!-- New Card -->
+                        <a href="adminberita" class="card-link" style="text-decoration: none;">
+                            <div class="card" style="width: 18rem;">
+                                <img src="img/fruite-item-6.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h1 class="card-title">Berita</h1>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                        
+                        <!-- New Card -->
+                        <a href="uploadfile" class="card-link" style="text-decoration: none;">
+                            <div class="card" style="width: 18rem;">
+                                <img src="img/fruite-item-4.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h1 class="card-title">Upload File</h1>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- End of card section -->   
                 </div>
-                <!-- End of card section -->   
             </div>
         </div>
     </div>
-</div>
-
     </x-app-layout>
 
     <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>

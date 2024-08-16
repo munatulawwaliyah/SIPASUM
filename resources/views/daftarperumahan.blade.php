@@ -68,25 +68,30 @@
                         <div class="navbar-nav mx-auto">
                             <a href="{{('/')}}" class="nav-item nav-link">Beranda</a>
                             <a href="{{'berita'}}" class="nav-item nav-link">Berita</a>
-                            <a href="{{'daftarperumahan'}}" class="nav-item nav-link">Daftar Perumahan</a>
+                            <a href="{{'daftarperumahan'}}" class="nav-item nav-link active">Daftar Perumahan</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Serah Terima PSU</a>
                                 <div class="dropdown-menu m-0 bg-secondary rounded-0">
                                     <a href="" class="dropdown-item">Panduan</a>
-                                    <a href="" class="dropdown-item">Format dan Persyaratan</a>
+                                    <a href="{{ $formatDanPersyaratan ? Storage::url($formatDanPersyaratan->file_path) : '#' }}" class="dropdown-item" target="_blank">Format dan Persyaratan</a>
                                 </div>
                             </div>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Tentang Hukum</a>
                                 <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                    <a href="" class="dropdown-item">Undang-Undang</a>
-                                    <a href="" class="dropdown-item">Peraturan Pemerintah</a>
-                                    <a href="" class="dropdown-item">Peraturan Menteri</a>
-                                    <a href="" class="dropdown-item">Peraturan Daerah</a>
-                                    <a href="" class="dropdown-item">Peraturan Bupati</a>
+                                    <a href="{{ $UU ? Storage::url($UU->file_path) : '#' }}" class="dropdown-item" target="_blank">Undang-Undang</a>
+                                    <!-- Dropdown for Peraturan Pemerintah with hidden submenu -->
+                                    <div class="dropdown">
+                                        <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Peraturan Pemerintah</a>
+                                            <a href="{{ $PP14 ? Storage::url($PP14->file_path) : '#' }}" class="dropdown-item" target="_blank" class="dropdown-item">Nomor 14 Tahun 2016</a>
+                                            <a href="{{ $PP64 ? Storage::url($PP64->file_path) : '#' }}" class="dropdown-item" target="_blank" class="dropdown-item">Nomor 64 Tahun 2016</a>
+                                    </div>
+                                    <a href="{{ $Permen ? Storage::url($Permen->file_path) : '#' }}" class="dropdown-item" target="_blank" class="dropdown-item">Peraturan Menteri</a>
+                                    <a href="{{ $Perda ? Storage::url($Perda->file_path) : '#' }}" class="dropdown-item" target="_blank" class="dropdown-item">Peraturan Daerah</a>
+                                    <a href="{{ $Perbup ? Storage::url($Perbup->file_path) : '#' }}" class="dropdown-item" target="_blank" class="dropdown-item">Peraturan Bupati</a>
                                 </div>
                             </div>
-                            <a href="" class="nav-item nav-link">Tentang</a>
+                            <a href="{{'tentang'}}" class="nav-item nav-link">Tentang</a>
                         </div>
                             <a href="login" class="my-auto"><i class="fas fa-user fa-2x"></i></a>
                         </div>
@@ -159,6 +164,7 @@
                                                             <p><strong>Nama Developer:</strong> {{ $p->nama_developer }}</p>
                                                         </div>
                                                     </div>
+                                                    @if($p->status_serah_terima_psu == 1)
                                                     <div class="row my-3">
                                                         <div class="col-12 text-center bg-light p-2">Jenis PSU</div>
                                                         <div class="col-4 text-center bg-light p-2">Prasarana</div>
@@ -185,7 +191,7 @@
                                                             <p><strong> Pendidikan: </strong> {{ $sar->pendidikan}}</p>
                                                             <p><strong> Kesehatan: </strong> {{ $sar->kesehatan ? $sar->kesehatan . ' m2' : '-'}}</p>
                                                             <p><strong> Pemakaman: </strong> {{ $sar->pemakaman ? $sar->pemakaman . ' m2' : '-'}}</p>
-                                                            <p><strong> Parkir: </strong> {{ $sar->parkir ? $ar->parkir . ' m2' : '-'}}</p>
+                                                            <p><strong> Parkir: </strong> {{ $sar->parkir ? $sar->parkir . ' m2' : '-'}}</p>
                                                             <p><strong> Pelayan Umum dan Pemerintahan: </strong> {{ $sar->pelayanan_umum_dan_pemerintahan}}</p>
                                                             <p><strong> Sarana Lainnya: <br> </strong> {{ $sar->sarana_lainnya ?: '-'}}</p>
                                                             @endforeach
@@ -204,6 +210,7 @@
                                                     </div>
                                                     <!-- Visual separator -->
                                                     <hr>
+                                                    @endif
                                                     <div class="row my-3">
                                                         <div class="col-4 text-center bg-light p-2">Luas Perumahan: <br><strong>{{ $p->luas_lahan_perumahan }} m2</strong></div>
                                                         <div class="col-4 text-center bg-light p-2">Luas Lahan Non Efektif: <br><strong>{{ $p->luas_lahan_non_efektif }} m2</strong></div>

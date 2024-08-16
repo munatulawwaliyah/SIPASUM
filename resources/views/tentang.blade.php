@@ -35,9 +35,9 @@
     <body>
 
         <!-- Spinner Start -->
-        <!-- <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+        <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
             <div class="spinner-grow text-primary" role="status"></div>
-        </div> -->
+        </div>
         <!-- Spinner End -->
 
 
@@ -67,7 +67,7 @@
                     <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
                             <a href="{{('/')}}" class="nav-item nav-link">Beranda</a>
-                            <a href="{{'berita'}}" class="nav-item nav-link active">Berita</a>
+                            <a href="{{'berita'}}" class="nav-item nav-link">Berita</a>
                             <a href="{{'daftarperumahan'}}" class="nav-item nav-link">Daftar Perumahan</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Serah Terima PSU</a>
@@ -91,7 +91,7 @@
                                     <a href="{{ $Perbup ? Storage::url($Perbup->file_path) : '#' }}" class="dropdown-item" target="_blank" class="dropdown-item">Peraturan Bupati</a>
                                 </div>
                             </div>
-                            <a href="{{'tentang'}}" class="nav-item nav-link">Tentang</a>
+                            <a href="{{'tentang'}}" class="nav-item nav-link active">Tentang</a>
                         </div>
                             <a href="login" class="my-auto"><i class="fas fa-user fa-2x"></i></a>
                         </div>
@@ -101,138 +101,33 @@
         </div>
         <!-- Navbar End -->
 
-       <!-- Main Post Section Start -->
-        <div class="container my-5 main-content">
-            <div class="container-fluid py-5">
-                <div class="container py-5">
-                    <div class="row g-4">
-                        <!-- Main Post -->
-                        <div class="col-lg-7 col-xl-8 mt-0">
-                            <div class="position-relative overflow-hidden rounded">
-                                <img src="uploads/{{ $beritas->gambar }}" class="img-fluid rounded img-zoomin w-100" alt="">
-                                <div class="d-flex justify-content-center px-4 position-absolute flex-wrap" style="bottom: 10px; left: 0;">
-                                    <a href="#" class="text-white me-3 link-hover"><i class="fa fa-clock"></i> {{ $beritas->tanggal }}</a>
-                                    <a href="#" class="text-white me-3 link-hover"><i class="fa fa-eye"></i> {{ $beritas->views }} Views</a>
-                                </div>
-                            </div>
-                            <div class="border-bottom py-3">
-                                <a href="#" class="display-4 text-dark mb-0 link-hover" data-bs-toggle="modal" data-bs-target="#detailModal-{{ $beritas->id }}">{{ $beritas->judul }}</a>
-                            </div>
-                            <p class="mt-3 mb-4">{{ $beritas->deskripsi }}</p>
-                            
-                            <!-- Modal for Main Post -->
-                            <div class="modal fade" id="detailModal-{{ $beritas->id }}" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="detailModalLabel">{{ $beritas->judul }}</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p><strong>{{$beritas->headline}}</strong></p>
-                                            <p><strong>Tanggal:</strong> {{ $beritas->tanggal }}</p>
-                                            <img src="uploads/{{ $beritas->gambar }}" class="img-fluid rounded mb-3" alt="">
-                                            <p>{{ $beritas->deskripsi }}</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Additional Stories -->
-                            <div class="bg-light p-4 rounded">
-                                <div class="news-2">
-                                    <h3 class="mb-4">Top Story</h3>
-                                </div>
-                                @foreach ($otherBeritas as $item)
-                                    <div class="row g-4 align-items-center">
-                                        <div class="col-md-6">
-                                            <div class="rounded overflow-hidden">
-                                                <img src="uploads/{{ $item->gambar }}" class="img-fluid rounded img-zoomin w-100" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="d-flex flex-column">
-                                                <a href="#" class="h3" data-bs-toggle="modal" data-bs-target="#detailModal-{{ $item->id }}">{{ $item->headline }}</a>
-                                                <p class="mb-0 fs-5"><i class="fa fa-clock"> {{ $item->tanggal }}</i></p>
-                                                <p class="mb-0 fs-5"><i class="fa fa-eye"> {{ $item->views }} Views</i></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Modal for Additional Stories -->
-                                    <div class="modal fade" id="detailModal-{{ $item->id }}" tabindex="-1" aria-labelledby="detailModalLabel-{{ $item->id }}" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="detailModalLabel-{{ $item->id }}">{{ $item->judul }}</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p><strong>{{$item->headline}}</strong></p>
-                                                    <p><strong>Tanggal:</strong> {{ $item->tanggal }}</p>
-                                                    <img src="uploads/{{ $item->gambar }}" class="img-fluid rounded mb-3" alt="">
-                                                    <p>{{ $item->deskripsi }}</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                        
-                        <!-- Sidebar -->
-                        <div class="col-lg-5 col-xl-4">
-                            <div class="bg-light rounded p-4 pt-0">
-                                <div class="row g-4">
-                                    @foreach ($sidebarBeritas as $item)
-                                        <div class="col-12">
-                                            <div class="rounded overflow-hidden">
-                                                <img src="uploads/{{ $item->gambar }}" class="img-fluid rounded img-zoomin w-100" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="d-flex flex-column">
-                                                <a href="#" class="h4 mb-2" data-bs-toggle="modal" data-bs-target="#detailModal-{{ $item->id }}">{{ $item->judul }}</a>
-                                                <p class="fs-5 mb-0"><i class="fa fa-clock"> {{ $item->tanggal }}</i></p>
-                                                <p class="fs-5 mb-0"><i class="fa fa-eye"> {{ $item->views }} Views</i></p>
-                                            </div>
-                                        </div>
-
-                                        <!-- Modal for Sidebar Items -->
-                                        <div class="modal fade" id="detailModal-{{ $item->id }}" tabindex="-1" aria-labelledby="detailModalLabel-{{ $item->id }}" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="detailModalLabel-{{ $item->id }}">{{ $item->judul }}</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <p><strong>{{$item->headline}}</strong></p>
-                                                        <p><strong>Tanggal:</strong> {{ $item->tanggal }}</p>
-                                                        <img src="uploads/{{ $item->gambar }}" class="img-fluid rounded mb-3" alt="">
-                                                        <p>{{ $item->deskripsi }}</p>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
+        <!-- 404 Start -->
+        <div class="container my-2 main-content">
+        <div class="container-fluid py-5">
+            <div class="container py-5 text-center">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <h1 class="display-1 text-primary">SIPASUM</h1>
+                        <h5 class="mb-4">Sistem Informasi Prasarana Sarana dan Utilitas Umum</h5>
+                        <p class="row mb-4 text-justify"> 
+                        Aplikasi SIPASUM (Sistem Informasi Prasarana Sarana dan Utilitas Umum) adalah aplikasi pelayanan publik yang dilaksanakan oleh bidang ( Perumahan Rakyat dan Kawasan Permukiman) Dinas PUTRLH Kabupaten Tasikmalaya 
+                        untuk mempermudah pelayanan Pengesahan Site Plan Perumahan dan Pelayanan Penyerahan PSU (Prasarana Sarana dan Utilitas Umum) Perumahan guna mendukung terlaksananya program dan kegiatan diarahkan yang sesuai dengan 
+                        Visi Kabupaten Tasikmalaya "Dengan Semangat Gotong Royong, Mewujudkan Kabupaten Tasikmalaya Yang Religius/Islami, Berdaya Saing, Dan Sejahtera"khususnya pada Misi ke-2 yaitu “Mewujudkan pemerintahan yang melayani, 
+                        bersih,dan professional ” pada misi ini berkaitan dengan komitmen pemerintah untukmemberikan pelayanan publik kepada masyarakat dalam penyediaan, pengelolaandan pemeliharaan Prasarana, Sarana dan Utilitas (PSU) 
+                        Perumahan agar terpeliharapada saat PSU Perumahan tersebut telah diserah terimakan oleh pengembangkepada pemerintah daerah dan Misi ke-4 “Mewujudkan iklim investasi yang kondusifdalam upaya mendorong pengembangan wilayah, 
+                        dunia usaha dan penciptaanlapangan kerja melalui pengembangan kerjasama skala Lokal, Nasional, Regional,dan Global” pada misi ini berkaitan penyediaan informasi yang jelas dan regulasiyang bersifat sistematis dan mampu mengakomodir perihal penyediaan,
+                        pengelolaan dan pemeliharaan perihal PSU agar dapat meningkatkan daya tarikinvestasi di sektor pengembangan perumahan dan kawasan permukiman diKabupaten Tasikmalaya
+                        </p>
+                        <p class="row mb-4 text-justify">
+                        Pembuatan Aplikasi SIPASUM merupakan karya inovasi dari Staff dan Kepala Bidang Serta Kepala Dinas Perumahan PUTRLH Kabupaten Tasikmalaya dalam rangka implementasi aksi 
+                        perubahan guna menyelesaikan kegiatan yang ada di Bidang Perumahan Rakyat dan Kawasan Permukiman Kabupaten Tasikmalaya.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Main Post Section End -->
+        </div>
+        <!-- 404 End -->
 
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">

@@ -92,6 +92,7 @@
         </x-app-layout>
 
         <!-- Detail Modal -->
+         @foreach ($beritas as $berita)
         <div class="modal fade" id="detailModal-{{ $berita->id }}" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -112,6 +113,8 @@
                 </div>
             </div>
         </div>
+        @endforeach
+        <!-- Modal Detail End -->
 
 
         <!-- Modal Tambah Berita Start -->
@@ -160,6 +163,7 @@
         <!-- Modal Tambah Berita End -->
 
         <!-- Modal Update Start -->
+         @foreach ($beritas as $berita)
         <div class="modal fade" id="crudUpdateModal-{{ $berita->id }}" tabindex="-1" aria-labelledby="crudUpdateModalLabel-{{ $berita->id }}" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
@@ -204,9 +208,11 @@
                 </div>
             </div>
         </div>
+        @endforeach
     <!-- Modal Update End  -->
 
     <!-- Modal Delete Start -->
+     @foreach ($beritas as $berita)
     <div class="modal fade" id="deleteModal-{{ $berita->id }}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -228,6 +234,7 @@
             </div>
         </div>
     </div>
+    @endforeach
     <!-- Modal Delete End -->
 
 

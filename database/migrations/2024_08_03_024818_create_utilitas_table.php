@@ -16,11 +16,11 @@ return new class extends Migration
             $table->foreignId('perumahans_id')->constrained('perumahans')->onDelete('cascade');
             $table->string('jaringan_penerangan')->nullable();
             $table->string('jaringan_air_bersih')->nullable();
-            $table->boolean('jaringan_listrik');
-            $table->boolean('jaringan_telpon');
-            $table->boolean('jaringan_pemadam_kebakaran');
-            $table->boolean('gas');
-            $table->boolean('transportasi');
+            $table->boolean('jaringan_listrik')->nullable();
+            $table->boolean('jaringan_telpon')->nullable();
+            $table->boolean('jaringan_pemadam_kebakaran')->nullable();
+            $table->boolean('gas')->nullable();
+            $table->boolean('transportasi')->nullable();
             $table->timestamps();
         });
     }

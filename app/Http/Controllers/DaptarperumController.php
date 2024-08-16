@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\File;
 use App\Models\Perumahan;
 use App\Models\Prasarana;
 use App\Models\Sarana;
@@ -25,6 +26,14 @@ class DaptarperumController extends Controller
             $perumahan->utilitas = Utilitas::where('perumahans_id', $perumahan->id)->get();
         });
 
-        return view('daftarperumahan', compact('perumahans'));
+        $formatDanPersyaratan = File::where('nama_file', 'Format dan Persyaratan')->First();
+        $UU = File::where('nama_file', 'Undang-Undang')->First();
+        $PP14 = File::where('nama_file', 'PP NO 14')->First();
+        $PP64 = File::where('nama_file', 'PP NO 64')->First();
+        $Permen = File::where('nama_file', 'Peraturan Mentri')->First();
+        $Perda = File::where('nama_file', 'Peraturan Daerah')->First();
+        $Perbup = File::where('nama_file', 'Peraturan Bupati')->First();
+
+        return view('daftarperumahan', compact('perumahans', 'formatDanPersyaratan','UU', 'PP14', 'PP64', 'Permen', 'Perda', 'Perbup'));
     }//
 }
