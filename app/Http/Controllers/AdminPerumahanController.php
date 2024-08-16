@@ -175,7 +175,7 @@ class AdminPerumahanController extends Controller
             $validatedData['foto'] = $fileName;
         }
 
-        $perumahan->update($request->all());
+        $perumahan->update($validatedData);
 
         $perumahan->prasarana()->updateOrCreate(
             ['perumahans_id'=>$perumahan->id],
