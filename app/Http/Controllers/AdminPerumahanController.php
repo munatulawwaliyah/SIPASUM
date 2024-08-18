@@ -176,7 +176,7 @@ public function update(Request $request, $id)
 
         $perumahan->update($request->all());
 
-        $perumahan->prasarana()->updateOrCreate(
+        $perumahan->prasaranas()->updateOrCreate(
             ['perumahans_id'=>$perumahan->id],
             [
             'jaringan_jalan' => $request->input('jaringan_jalan'),
@@ -187,7 +187,7 @@ public function update(Request $request, $id)
             ]
         );
 
-        $perumahan->sarana()->updateOrCreate(
+        $perumahan->saranas()->updateOrCreate(
             ['perumahans_id'=>$perumahan->id],
             [
             'peribadahan' => $request->input('peribadahan'),
