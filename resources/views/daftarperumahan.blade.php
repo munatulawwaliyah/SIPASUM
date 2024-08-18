@@ -183,16 +183,16 @@
                                                         </div>
                                                         <div class="col-4 text-center">
                                                             @foreach ($p->saranas as $sar)
-                                                            <p><strong> Peribadatan: </strong> {{ $sar->peribadahan }}</p>
+                                                            <p><strong> Peribadatan: </strong> {{ $sar->peribadahan ?: '-'}}</p>
                                                             <p><strong> Rekreasi & Olahraga: </strong> {{ $sar->rekreasi_dan_olahraga ? $sar->rekreasi_dan_olahraga . ' m2' : '-'}}</p>
                                                             <p><strong> Pertamanan & RTH: </strong> {{ $sar->pertamanan_dan_rth ? $sar->pertamanan_dan_rth . ' m2' : '-'}}</p>
                                                             <P><strong> Perniagaan: </strong> {{ $sar->perniagaan ? $sar->perniagaan . ' m2' : '-'}}</P>
                                                             <p><strong> Fasilitas Sosial: </strong> {{ $sar->fasilitas_sosial ? $sar->fasilitas_sosial . ' m2' : '-'}}</p>
-                                                            <p><strong> Pendidikan: </strong> {{ $sar->pendidikan}}</p>
+                                                            <p><strong> Pendidikan: </strong> {{ $sar->pendidikan ?: '-'}}</p>
                                                             <p><strong> Kesehatan: </strong> {{ $sar->kesehatan ? $sar->kesehatan . ' m2' : '-'}}</p>
                                                             <p><strong> Pemakaman: </strong> {{ $sar->pemakaman ? $sar->pemakaman . ' m2' : '-'}}</p>
                                                             <p><strong> Parkir: </strong> {{ $sar->parkir ? $sar->parkir . ' m2' : '-'}}</p>
-                                                            <p><strong> Pelayan Umum dan Pemerintahan: </strong> {{ $sar->pelayanan_umum_dan_pemerintahan}}</p>
+                                                            <p><strong> Pelayan Umum dan Pemerintahan: </strong> {{ $sar->pelayanan_umum_dan_pemerintahan ?: '-'}}</p>
                                                             <p><strong> Sarana Lainnya: <br> </strong> {{ $sar->sarana_lainnya ?: '-'}}</p>
                                                             @endforeach
                                                         </div>
