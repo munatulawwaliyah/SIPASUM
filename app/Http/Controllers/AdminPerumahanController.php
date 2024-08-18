@@ -174,7 +174,7 @@ public function update(Request $request, $id)
         $validatedData['foto'] = $fileName;
     }
 
-        $perumahan->update($request->all());
+        $perumahan->update($validatedData);
 
         $perumahan->prasaranas()->updateOrCreate(
             ['perumahans_id'=>$perumahan->id],
