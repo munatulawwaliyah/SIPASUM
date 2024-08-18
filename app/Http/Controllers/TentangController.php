@@ -16,7 +16,8 @@ class TentangController extends Controller
         $Permen = File::where('nama_file', 'Peraturan Mentri')->First();
         $Perda = File::where('nama_file', 'Peraturan Daerah')->First();
         $Perbup = File::where('nama_file', 'Peraturan Bupati')->First();
+        $Panduan = File::where('nama_file', 'Panduan')->First();
 
-        return view('tentang', compact('formatDanPersyaratan', 'UU', 'PP14', 'PP64', 'Permen', 'Perda', 'Perbup'));
+        return view('tentang', compact('formatDanPersyaratan', 'UU', 'PP14', 'PP64', 'Permen', 'Perda', 'Perbup', 'Panduan'));
     }//
 }

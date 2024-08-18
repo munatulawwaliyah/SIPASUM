@@ -177,7 +177,7 @@ class AdminPerumahanController extends Controller
 
         $perumahan->update($validatedData);
 
-        $perumahan->prasarana()->updateOrCreate(
+        $perumahan->prasaranas()->updateOrCreate(
             ['perumahans_id'=>$perumahan->id],
             [
             'jaringan_jalan' => $request->input('jaringan_jalan'),
@@ -188,7 +188,7 @@ class AdminPerumahanController extends Controller
             ]
         );
 
-        $perumahan->sarana()->updateOrCreate(
+        $perumahan->saranas()->updateOrCreate(
             ['perumahans_id'=>$perumahan->id],
             [
             'peribadahan' => $request->input('peribadahan'),

@@ -19,7 +19,7 @@ class HomeController extends Controller
         $desas = Desa::all();
 
         // Start the perumahan query
-        $perumahanQuery = Perumahan::query()->with('desas.kecamatans');
+        $perumahanQuery = Perumahan::query()->with(['desas.kecamatans', 'prasaranas', 'saranas', 'utilitas']);
 
         if ($request->has('kecamatan_id') && $request->kecamatan_id) {
             $perumahanQuery->whereHas('desas.kecamatans', function($q) use ($request) {
@@ -38,7 +38,7 @@ class HomeController extends Controller
         }
 
         // Get the filtered perumahan results
-        $perumahans = $perumahanQuery->get();
+        $perumahans = $perumahanQuery->paginate(10);
 
         // Get the count of all Perumahan
         $jumlahPerumahan = Perumahan::count();
@@ -50,11 +50,11 @@ class HomeController extends Controller
         $belumSerahTerima = Perumahan::where('status_serah_terima_psu', false)->count();
 
         // Fetch related prasaranas, saranas, and utilitas for each perumahan
-        $perumahans->each(function ($perumahan) {
-            $perumahan->prasaranas = Prasarana::where('perumahans_id', $perumahan->id)->get();
-            $perumahan->saranas = Sarana::where('perumahans_id', $perumahan->id)->get();
-            $perumahan->utilitas = Utilitas::where('perumahans_id', $perumahan->id)->get();
-        });
+        // $perumahans->each(function ($perumahan) {
+        //     $perumahan->prasaranas = Prasarana::where('perumahans_id', $perumahan->id)->get();
+        //     $perumahan->saranas = Sarana::where('perumahans_id', $perumahan->id)->get();
+        //     $perumahan->utilitas = Utilitas::where('perumahans_id', $perumahan->id)->get();
+        // });
 
         $formatDanPersyaratan = File::where('nama_file', 'Format dan Persyaratan')->First();
         $UU = File::where('nama_file', 'Undang-Undang')->First();
@@ -63,8 +63,9 @@ class HomeController extends Controller
         $Permen = File::where('nama_file', 'Peraturan Mentri')->First();
         $Perda = File::where('nama_file', 'Peraturan Daerah')->First();
         $Perbup = File::where('nama_file', 'Peraturan Bupati')->First();
+        $Panduan = File::where('nama_file', 'Panduan')->First();
 
-        return view('welcome', compact('perumahans', 'kecamatans', 'desas', 'jumlahPerumahan', 'sudahSerahTerima', 'belumSerahTerima', 'formatDanPersyaratan', 'UU', 'PP14', 'PP64', 'Permen', 'Perda', 'Perbup'));
+        return view('welcome', compact('perumahans', 'kecamatans', 'desas', 'jumlahPerumahan', 'sudahSerahTerima', 'belumSerahTerima', 'formatDanPersyaratan', 'UU', 'PP14', 'PP64', 'Permen', 'Perda', 'Perbup', 'Panduan'));
     }
 
     public function getDesa($kecamatan_id)

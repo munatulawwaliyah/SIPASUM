@@ -34,7 +34,7 @@
         </x-slot>
 
         <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="max-w-9xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
                         <!-- Card section -->
@@ -49,7 +49,6 @@
                                                 <th>Headline</th>
                                                 <th>Tanggal</th>
                                                 <th>Waktu</th>
-                                                <th>Gambar</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -61,7 +60,6 @@
                                                 <td>{{ $berita->headline}}</td>
                                                 <td>{{ $berita->tanggal}}</td>
                                                 <td>{{ $berita->waktu}}</td>
-                                                <td><img src="uploads/{{$berita->gambar}}" alt="Gambar Berita" width="100"></td>
                                                 <td>
                                                     <div class="justify-content-between">
                                                         <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#detailModal-{{ $berita->id }}">
@@ -94,7 +92,7 @@
         <!-- Detail Modal -->
          @foreach ($beritas as $berita)
         <div class="modal fade" id="detailModal-{{ $berita->id }}" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="detailModalLabel">Detail Berita</h5>

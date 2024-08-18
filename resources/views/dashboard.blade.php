@@ -41,7 +41,7 @@
                     <div class="flex space-x-4">
                         <a href="perumahan" class="card-link" style="text-decoration: none;">
                             <div class="card" style="width: 18rem;">
-                                <img src="img/fruite-item-1.jpg" class="card-img-top" alt="...">
+                                <img src="img/home.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h1 class="card-title">Perumahan</h1>
                                 </div>
@@ -51,7 +51,7 @@
                         <!-- New Card -->
                         <a href="adminberita" class="card-link" style="text-decoration: none;">
                             <div class="card" style="width: 18rem;">
-                                <img src="img/fruite-item-6.jpg" class="card-img-top" alt="...">
+                                <img src="img/news.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h1 class="card-title">Berita</h1>
                                 </div>
@@ -61,7 +61,7 @@
                         <!-- New Card -->
                         <a href="uploadfile" class="card-link" style="text-decoration: none;">
                             <div class="card" style="width: 18rem;">
-                                <img src="img/fruite-item-4.jpg" class="card-img-top" alt="...">
+                                <img src="img/file.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h1 class="card-title">Upload File</h1>
                                 </div>

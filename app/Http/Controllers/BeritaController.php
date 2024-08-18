@@ -33,8 +33,9 @@ class BeritaController extends Controller
         $Permen = File::where('nama_file', 'Peraturan Mentri')->First();
         $Perda = File::where('nama_file', 'Peraturan Daerah')->First();
         $Perbup = File::where('nama_file', 'Peraturan Bupati')->First();
+        $Panduan = File::where('nama_file', 'Panduan')->First();
 
-        return view('berita', compact('beritas', 'otherBeritas', 'sidebarBeritas', 'formatDanPersyaratan', 'UU', 'PP14', 'PP64', 'Permen', 'Perda', 'Perbup'));
+        return view('berita', compact('beritas', 'otherBeritas', 'sidebarBeritas', 'formatDanPersyaratan', 'UU', 'PP14', 'PP64', 'Permen', 'Perda', 'Perbup', 'Panduan'));
     }
 
     

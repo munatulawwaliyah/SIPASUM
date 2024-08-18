@@ -450,7 +450,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="crudForm-{{ $perumahan->id }}" action="{{ route('perumahan.update', ['id'=> $perumahan->id]) }}" method="POST" enctype="multipart/form-data">
+                    <form id="updateModal-{{ $perumahan->id }}" action="{{ route('perumahan.update', ['id'=> $perumahan->id]) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
@@ -463,7 +463,7 @@
                                 <option value="">Pilih Kecamatan</option>
                                 @foreach($kecamatans as $kecamatan)
                                 <option value="{{ $kecamatan->id }}"
-                                    {{ old('kecamatans_id', isset($perumahan) ? $perumahan->kecamatans_id : '') == $kecamatan->id ? 'selected' : '' }}>
+                                    {{ old('kecamatans_id', $perumahan->kecamatans_id) == $kecamatan->id ? 'selected' : '' }}>
                                     {{ $kecamatan->nama_kecamatan }}
                                 </option>
                                 @endforeach
@@ -473,7 +473,12 @@
                             <label for="desas_id" class="form-label">Desa</label>
                             <select id="desas_id" class="form-select" name="desas_id">
                                 <option value="">Pilih Desa</option>
-                                <!-- Desa options will be populated based on selected Kecamatan -->
+                                @foreach($desas as $desa)
+                                <option value="{{ $desa->id }}"
+                                    {{ old('desas_id', $perumahan->desas_id) == $desa->id ? 'selected' : '' }}>
+                                    {{ $desa->nama_desa }}
+                                </option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="mb-3">
@@ -741,8 +746,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/js/desa.js"></script>
-
+    <script src="/js/update.js"></script>
 
 </body>
 

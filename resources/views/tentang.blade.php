@@ -46,12 +46,8 @@
             <div class="container topbar bg-primary d-none d-lg-block">
                 <div class="d-flex justify-content-between">
                     <div class="top-info ps-2">
-                        <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">Jl. Raya Mangunreja-Sukapura Km. 1.200</a></small>
-                        <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">sipasum@Example.com</a></small>
-                    </div>
-                    <div class="top-link pe-2">
-                        <a href="#" class="text-white"><small class="text-white mx-2">Privacy Policy</small>/</a>
-                        <a href="#" class="text-white"><small class="text-white mx-2">Terms of Use</small></a>
+                        <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">Jl. Raya Mangunreja-Sukaraja Km. 1.200</a></small>
+                        <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">dputrprkplh@tasikmalayakab.go.id</a></small>
                     </div>
                 </div>
             </div>
@@ -72,7 +68,7 @@
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Serah Terima PSU</a>
                                 <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                    <a href="" class="dropdown-item">Panduan</a>
+                                    <a href="{{ $Panduan ? Storage::url($Panduan->file_path) : '#' }}" class="dropdown-item" target="_blank">Panduan</a>
                                     <a href="{{ $formatDanPersyaratan ? Storage::url($formatDanPersyaratan->file_path) : '#' }}" class="dropdown-item" target="_blank">Format dan Persyaratan</a>
                                 </div>
                             </div>
@@ -148,31 +144,30 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="d-flex justify-content-end pt-3">
-                                <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-youtube"></i></a>
-                                <a class="btn btn-outline-secondary btn-md-square rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href="https://www.youtube.com/@dinasputrppkab.tasikmalaya9510" target="_blank"><i class="fab fa-youtube"></i></a>
+                                <a class="btn btn-outline-secondary btn-md-square rounded-circle" href="https://www.instagram.com/dputrprkplh?igsh=aDg5bm8zM3piZXR4" target="_blank"><i class="fab fa-instagram"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row g-5">
-                    <div class="col-lg-3 col-md-6">
+                <div class="col-lg-6 col-md-6">
                         <div class="footer-item">
-                            <h4 class="text-light mb-3">Why People Like us!</h4>
-                            <p class="mb-4">typesetting, remaining essentially unchanged. It was 
-                                popularised in the 1960s with the like Aldus PageMaker including of Lorem Ipsum.</p>
-                            <a href="" class="btn border-secondary py-2 px-4 rounded-pill text-primary">Read More</a>
+                            <p class="mb-4">
+                            SIPASUM merupakan karya inovasi dari Staff dan Kepala Bidang Serta Kepala Dinas Perumahan PUTRLH 
+                            Kabupaten Tasikmalaya dalam rangka implementasi aksi perubahan guna menyelesaikan kegiatan 
+                            yang ada di Bidang Perumahan Rakyat dan Kawasan Permukiman Kabupaten Tasikmalaya.</p>
+                            <a href="{{'tentang'}}" class="btn border-secondary py-2 px-4 rounded-pill text-primary">Baca Selengkapnya</a>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-6 col-md-6">
                         <div class="footer-item">
-                            <h4 class="text-light mb-3">Contact</h4>
-                            <p>Address: 1429 Netus Rd, NY 48247</p>
-                            <p>Email: Example@gmail.com</p>
-                            <p>Phone: +0123 4567 8910</p>
-                            <p>Payment Accepted</p>
-                            <img src="" class="img-fluid" alt="">
+                            <h5 class="text-primary mb-3">Contact</h5>
+                            <p>Alamat: Jl. Raya Mangunreja-Sukaraja Km. 1.200 Kabupaten Tasikmalaya</p>
+                            <p>Email: dputrprkplh@tasikmalayakab.go.id</p>
+                            <p>Telephone: (0265) 548786 Fax: (0265) 548777</p>
+                            <a href="https://dinasputrpp.tasikmalayakab.go.id/" class="text-white-50"><p>Website: https://dinasputrpp.tasikmalayakab.go.id</p></a>
                         </div>
                     </div>
                 </div>
@@ -185,15 +180,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span>
-                    </div>
-                    <div class="col-md-6 my-auto text-center text-md-end text-white">
-                        Designed By <a class="border-bottom" href="">HTML Codex</a>
+                        <span class="text-light"><i class="fas fa-copyright text-light me-2"></i>2024, All right reserved.</span>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Copyright End -->
+
 
 
 
