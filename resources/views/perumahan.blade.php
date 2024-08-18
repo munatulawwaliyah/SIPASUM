@@ -463,22 +463,17 @@
                                 <option value="">Pilih Kecamatan</option>
                                 @foreach($kecamatans as $kecamatan)
                                 <option value="{{ $kecamatan->id }}"
-                                    {{ old('kecamatans_id', $perumahan->kecamatans_id) == $kecamatan->id ? 'selected' : '' }}>
+                                    {{ old('kecamatans_id', isset($perumahan) ? $perumahan->kecamatans_id : '') == $kecamatan->id ? 'selected' : '' }}>
                                     {{ $kecamatan->nama_kecamatan }}
                                 </option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="desas_id" class="form-label">Desa</label>
-                            <select id="desas_id" class="form-select" name="desas_id">
+                            <label for="desas_id-{{ $perumahan->id }}" class="form-label">Desa</label>
+                            <select id="desas_id-{{ $perumahan->id }}" class="form-select" name="desas_id">
                                 <option value="">Pilih Desa</option>
-                                @foreach($desas as $desa)
-                                <option value="{{ $desa->id }}"
-                                    {{ old('desas_id', $perumahan->desas_id) == $desa->id ? 'selected' : '' }}>
-                                    {{ $desa->nama_desa }}
-                                </option>
-                                @endforeach
+                                <!-- Desa options will be populated based on selected Kecamatan -->
                             </select>
                         </div>
                         <div class="mb-3">
@@ -748,7 +743,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/js/desa.js"></script>
-    <script src="/js/update.js"></script>
+
 
 </body>
 
